@@ -9,7 +9,7 @@ function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-slate-950 text-white">
         <Navbar/>
-        <main>{children}</main>
+        {children}
         <Footer/>
       </body>
     </html>
