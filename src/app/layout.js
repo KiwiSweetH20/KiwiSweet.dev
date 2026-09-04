@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-slate-950 text-white">
+      <body className="bg-taupe-950 text-ctp-subtext1">
         <Navbar/>
         {children}
         <Footer/>

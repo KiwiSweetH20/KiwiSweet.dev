@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@import "@catppuccin/tailwindcss/mocha.css";
+
+@layer base {
+  body {
+    background-color: var(--color-ctp-base);
+    color: var(--color-ctp-text);
+  }
+}
+
+/* Tailwind v4 automatically maps dark mode to the CSS .dark class or the @media (prefers-color-scheme: dark) strategy.
+The @catppuccin/tailwindcss plugin automatically switches tokens when the parent wrapper changes. */

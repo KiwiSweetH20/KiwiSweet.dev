@@ -20,11 +20,11 @@ export default function Navbar() {
   return (
     <nav className="fixed top-6 z-50 left-1/2 -translate-x-1/2 flex items-center gap-4 border border-white/20 rounded-3xl bg-white/5 
                     px-6 py-3 backdrop-blur-md">
-      <div className="">Logo</div>
+      <div className="text-ctp-green">Logo</div>
       <div className="h-6 w-px bg-white/20"></div>
-        <Link className="inline-block" href="/">Home</Link>
-        <Link href="/about">About</Link>
-        <Link href="/projects">Projects</Link>
+        <Link className="inline-block text-ctp-green" href="/">Home</Link>
+        <Link className="inline-block text-ctp-green" href="/about">About</Link>
+        <Link className="inline-block text-ctp-green" href="/projects">Projects</Link>
     </nav>
 
   );
