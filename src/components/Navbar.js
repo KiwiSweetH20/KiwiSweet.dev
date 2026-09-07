@@ -29,7 +29,7 @@ export default function Navbar() {
         <Image
           src={Kiwi}
           alt="Me"
-          className=" w-12 h-12 rounded-full object-cover overflow-hidden "
+          className=" w-10 h-10 rounded-full object-cover overflow-hidden "
         />
       </div>
       <div className="h-6 w-px bg-white/20"></div>
