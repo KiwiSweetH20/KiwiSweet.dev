@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import KiwiSweet from "../public/KiwiSweet.jpg";
 import Kiwi from "../public/Kiwi.svg";
+import Projects from "../components/Projects";
 
 function Home() {
   return (
@@ -73,43 +74,9 @@ function Home() {
       </div>
 
       {/* Projects */}
-      <div className="flex flex-row rounded-2xl w-3/4 mx-auto mt-20">
-        <Image
-          src={Kiwi}
-          alt="Me"
-          className=" w-12 h-12 rounded-full object-cover "
-        />
-        <span className="text-ctp-green text-4xl font-bold inline-flex items-center">Projects</span>
-      </div>
-      <div className="flex flex-row rounded-2xl w-3/4 mx-auto m-5 h-70">
-      <div className=" border-taupe-900 border-2 basis-6xl h-fit rounded-2xl mx-5 m-5 hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
-        <div className="hover:blur-xs p-3 flex flex-col hover:bg-taupe-900/30">
-          <span className="text-ctp-green pb-2 font-bold text-2xl m-2">Wordle</span>
-        <span className="mb-2 mx-2">The Wordle game where you try to guess the word.</span>
-        </div>
-      </div>
-
-      <div className=" border-taupe-900  border-2 basis-6xl h-fit rounded-2xl mx-5 m-5 p-5 flex flex-col hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
-       <dive><Image
-          src={KiwiSweet}
-          alt="Me"
-          className=" w-full h-30 object-bottom object-cover m-2"
-        /></dive>
-        <span className="text-ctp-green pb-2 font-bold text-2xl">Wordle</span>
-        <span>The Wordle game where you try to guess the word.</span>
-      </div>
-
-      <div className=" border-taupe-900  border-2 basis-6xl h-fit rounded-2xl mx-5 m-5 p-5 flex flex-col hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
-       <dive><Image
-          src={KiwiSweet}
-          alt="Me"
-          className=" w-full h-1/3 object-top m-2"
-        /></dive>
-        <span className="text-ctp-green pb-2 font-bold text-2xl">Wordle</span>
-        <span>The Wordle game where you try to guess the word.</span>
-      </div>
-      </div>
-    </main>
+      <Projects />
+      </main>
+      
   );
 }
 
