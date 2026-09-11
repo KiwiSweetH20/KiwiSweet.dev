@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import Kiwi from "../public/Kiwi.svg";
+import {ExternalLink} from 'react-feather';
 
 export default function Projects() {
   const myProjects = [
@@ -78,25 +79,6 @@ function ProjectBox({ title, description, link, gitLink, site }) {
     </svg>,
   ];
 
-  const linkIcon = [
-    <svg
-      xmlns="http://w3.org"
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="oklch(54.7% 0.021 43.1)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      key="linkIcon"
-    >
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
-    </svg>,
-  ];
-
   return (
     <div className=" group relative overflow-hidden border-taupe-900 border-2 basis-6xl h-fit rounded-2xl mx-5 m-5 hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
       <div className="group-hover:blur-xs p-3 flex flex-col hover:bg-taupe-900/30">
@@ -111,11 +93,10 @@ function ProjectBox({ title, description, link, gitLink, site }) {
             {gitIcon}{link}
           </a>
         </span>
-        <button className=" m-3 p-0.5 px-2 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out">
-          {/* <span className="text-taupe-500 font-bold">Site</span> */}
+        <button type="button" className=" m-3 p-0.5 px-2 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out">
           <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <a href={site} target="_blank" rel="noopener noreferrer" className="text-taupe-500 font-bold inline-flex items-center">
-            {linkIcon} Site
+            Site <ExternalLink size={20}/> 
           </a>
           </span>
         </button>
