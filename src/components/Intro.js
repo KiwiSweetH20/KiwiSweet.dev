@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Clock from "./Clock.js"
+
 import KiwiSweet from "../public/KiwiSweet.jpg";
 import Kiwi from "../public/Kiwi.svg";
 
@@ -27,7 +29,7 @@ export default function Intro() {
         <div className="">{Pfp}</div>
         <span>status</span>
         <span>socials</span>
-        <span>clock</span>
+        <Clock/>
       </div>
       <div className="basis-5/6 p-3 flex flex-col">
         <span className="text-ctp-green text-2xl">Genevieve</span>
