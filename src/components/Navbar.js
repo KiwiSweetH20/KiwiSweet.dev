@@ -7,10 +7,7 @@ import Kiwi from "../public/Kiwi.svg";
 
 export default function Navbar() {
   return (
-    <nav
-      className="fixed top-6 z-50 left-1/2 -translate-x-1/2 flex items-center gap-4 border border-white/20 rounded-3xl bg-white/5 
-                    px-6 py-3 backdrop-blur-md"
-    >
+    <nav className="fixed top-6 z-50 left-1/2 -translate-x-1/2 flex items-center gap-4 border border-white/20 rounded-3xl bg-white/5 px-6 py-3 backdrop-blur-md">
       <div className="">
         <Image
           src={Kiwi}

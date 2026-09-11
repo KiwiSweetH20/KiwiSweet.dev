@@ -6,7 +6,7 @@ import {ExternalLink} from 'react-feather';
 export default function Projects() {
   const myProjects = [
     {
-      id: 1,
+      id: crypto.randomUUID(),
       title: "Wordle",
       description: "The Wordle game where you try to guess the word.",
       link: " /Wordle",
@@ -14,7 +14,7 @@ export default function Projects() {
       site: "https://wordle-blue-gamma.vercel.app/"
     },
     {
-      id: 2,
+      id: crypto.randomUUID(),
       title: "Toast Pop-Ups",
       description: "A simple toast pop-up notification system.",
       link: "/Toast-Pop-Ups",
@@ -22,7 +22,7 @@ export default function Projects() {
       site: "https://toast-pop-ups.vercel.app/",
     },
     {
-      id: 3,
+      id: crypto.randomUUID(),
       title: "Blog Project",
       description: "A simple blog project with interactive elements.",
       link: "/Blog-Project",
@@ -93,7 +93,7 @@ function ProjectBox({ title, description, link, gitLink, site }) {
             {gitIcon}{link}
           </a>
         </span>
-        <button type="button" className=" m-3 p-0.5 px-2 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out">
+        <button className=" m-3 p-0.5 px-2 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out">
           <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <a href={site} target="_blank" rel="noopener noreferrer" className="text-taupe-500 font-bold inline-flex items-center">
             Site <ExternalLink size={20}/> 

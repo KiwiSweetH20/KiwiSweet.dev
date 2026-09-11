@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import Clock from "./Clock.js"
+import Socials from "./Socials.js"
 
 import KiwiSweet from "../public/KiwiSweet.jpg";
 import Kiwi from "../public/Kiwi.svg";
@@ -10,7 +11,7 @@ export default function Intro() {
     <Image
       src={KiwiSweet}
       alt="Me"
-      key="pfp"
+      key="crypto.randomUUID()"
       className="w-30 h-30 rounded-full object-cover object-bottom"
     />,
   ];
@@ -18,17 +19,17 @@ export default function Intro() {
     <Image
       src={Kiwi}
       alt="Me"
-      key="kiwiIcon"
+      key="crypto.randomUUID()"
       className=" w-12 h-12 rounded-full object-cover "
     />,
   ];
 
   return (
-    <div className="flex flex-row border-ctp-green border-2 rounded-2xl w-3/4 mx-auto">
+    <div className="flex flex-row border-ctp-green border-2 rounded-2xl w-3/4 mx-auto bg-taupe-900/20 shadow-xl shadow-ctp-green/10">
       <div className="basis-1/6 p-3 flex flex-col items-center">
         <div className="">{Pfp}</div>
         <span>status</span>
-        <span>socials</span>
+        <Socials/>
         <Clock/>
       </div>
       <div className="basis-5/6 p-3 flex flex-col">
