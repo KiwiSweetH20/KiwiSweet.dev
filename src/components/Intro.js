@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import Clock from "./Clock.js"
 import Socials from "./Socials.js"
+import StatusCard from "./StatusCard.js";
 
 import KiwiSweet from "../public/KiwiSweet.jpg";
 import Kiwi from "../public/Kiwi.svg";
@@ -26,13 +27,13 @@ export default function Intro() {
 
   return (
     <div className="flex flex-row border-ctp-green border-2 rounded-2xl w-3/4 mx-auto bg-taupe-900/20 shadow-xl shadow-ctp-green/10">
-      <div className="basis-1/6 p-3 flex flex-col items-center">
+      <div className="basis-1/7 p-3 flex flex-col items-center">
         <div className="">{Pfp}</div>
-        <span>status</span>
+        <StatusCard/>
         <Socials/>
         <Clock/>
       </div>
-      <div className="basis-5/6 p-3 flex flex-col">
+      <div className="basis-6/7 p-3 flex flex-col">
         <span className="text-ctp-green text-2xl">Genevieve</span>
         <span className="">A.K.A KiwiSweet</span>
         <div className="inline-flex items-center">
