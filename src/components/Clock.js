@@ -17,8 +17,8 @@ export default function Clock() {
   }, []);
 
   return (
-    <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-900/20">
-      <legend className="border-taupe-800 text-ctp-green">Clock</legend>
+    <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-950/20">
+      <legend className="text-ctp-green">Clock</legend>
       <div>
         <p>{time ? format(time, "hh:mm:ss a") : "---"}</p>
         <p>{time ? format(time, "do LLL") : "---"}</p>

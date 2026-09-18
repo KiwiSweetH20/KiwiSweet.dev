@@ -1,8 +1,9 @@
 import Image from "next/image";
 
-import Clock from "./Clock.js"
-import Socials from "./Socials.js"
+import Clock from "./Clock.js";
+import Socials from "./Socials.js";
 import StatusCard from "./StatusCard.js";
+import IntroTools from "./IntroTools.js";
 
 import KiwiSweet from "../public/KiwiSweet.jpg";
 import Kiwi from "../public/Kiwi.svg";
@@ -29,9 +30,9 @@ export default function Intro() {
     <div className="flex flex-row border-ctp-green border-2 rounded-2xl w-3/4 mx-auto bg-taupe-900/20 shadow-xl shadow-ctp-green/10">
       <div className="basis-1/7 p-3 flex flex-col items-center">
         <div className="">{Pfp}</div>
-        <StatusCard/>
-        <Socials/>
-        <Clock/>
+        <StatusCard />
+        <Socials />
+        <Clock />
       </div>
       <div className="basis-6/7 p-3 flex flex-col">
         <span className="text-ctp-green text-2xl">Genevieve</span>
@@ -48,21 +49,7 @@ export default function Intro() {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur.
         </span>
-        <div className="inline-flex items-center">
-          {kiwiIcon}
-          <span className=" inline-flex text-ctp-green text-2xl">Tools</span>
-        </div>
-        <span>
-          React · Next.js · Tailwind · Vercel · Node.js · Git · Github
-        </span>
-        {/* alt + 250 = · */}
-        <div className="inline-flex items-center">
-          {kiwiIcon}
-          <span className=" inline-flex text-ctp-green text-2xl">
-            Languages
-          </span>
-        </div>
-        <span>Javascript | Jsx | Html | CSS </span>
+        <IntroTools />
       </div>
     </div>
   );

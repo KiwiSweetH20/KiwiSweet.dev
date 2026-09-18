@@ -49,7 +49,7 @@ export default function StatusCard() {
   }, []);
 
   return (
-    <fieldset className=" relative border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-900/20 ">
+    <fieldset className=" relative border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-950/20 ">
       <span className="absolute flex size-4 -top-5 right-1">
         <span
           className={`absolute inline-flex h-full w-full rounded-full ${
@@ -62,7 +62,7 @@ export default function StatusCard() {
           }`}
         ></span>
       </span>
-      <legend className="border-taupe-800 text-ctp-green">Status</legend>
+      <legend className="text-ctp-green">Status</legend>
       <div>
         <div
           className={`absolute  h-5 w-5 rounded-full transition-all duration-300 `}

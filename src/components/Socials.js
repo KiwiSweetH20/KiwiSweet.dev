@@ -32,8 +32,8 @@ export default function Socials() {
     },
   ];
   return (
-    <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-900/20">
-      <legend className="border-taupe-800 text-ctp-green">Socials</legend>
+    <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-950/20">
+      <legend className="text-ctp-green">Socials</legend>
       <div>
         <ul className="grid grid-cols-3 gap-2">
           {iconInfo.map((info) => (
