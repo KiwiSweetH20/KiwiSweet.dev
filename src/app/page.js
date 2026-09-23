@@ -2,6 +2,7 @@ import React from "react";
 
 import Projects from "../components/Projects";
 import Intro from "../components/Intro";
+import PixelSprite from "../components/PixelSprite"
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       {/* <div className="fixed inset-0-z-10 bg-slate-950">
         {/* {interactive background} */}
       {/* </div> */}
+      <PixelSprite/>
       <Intro />
       <Projects />
     </main>

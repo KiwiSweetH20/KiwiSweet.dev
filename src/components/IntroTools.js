@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-import Kiwi from "../public/Kiwi.svg";
-
 export default function IntroTools() {
   const kiwiIcon = [
     <Image
-      src={Kiwi}
+      src="/Kiwi.svg"
       alt="Me"
       key="crypto.randomUUID()"
-      className=" w-12 h-12 rounded-full object-cover "
+      width="12"
+      height="12"
+      className="w-12 h-12 rounded-full object-cover "
     />,
   ];
 

@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import Kiwi from "../public/Kiwi.svg";
 import {ExternalLink} from 'react-feather';
 
 export default function Projects() {
@@ -34,9 +33,11 @@ export default function Projects() {
     <>
       <div className="flex flex-row rounded-2xl w-3/4 mx-auto mt-20">
         <Image
-          src={Kiwi}
+          src="/Kiwi.svg"
           alt="Me"
-          className=" w-12 h-12 rounded-full object-cover "
+          width="12"
+          height="12"
+          className="w-12 h-12 rounded-full object-cover "
         />
         <span className="text-ctp-green text-4xl font-bold inline-flex items-center">
           Projects

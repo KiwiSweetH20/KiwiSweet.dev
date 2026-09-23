@@ -5,23 +5,24 @@ import Socials from "./Socials.js";
 import StatusCard from "./StatusCard.js";
 import IntroTools from "./IntroTools.js";
 
-import KiwiSweet from "../public/KiwiSweet.jpg";
-import Kiwi from "../public/Kiwi.svg";
-
 export default function Intro() {
   const Pfp = [
     <Image
-      src={KiwiSweet}
+      src="/KiwiSweet.jpg"
       alt="Me"
       key="crypto.randomUUID()"
+      width="80"
+      height="80"
       className="w-30 h-30 rounded-full object-cover object-bottom"
     />,
   ];
   const kiwiIcon = [
     <Image
-      src={Kiwi}
+      src="/Kiwi.svg"
       alt="Me"
       key="crypto.randomUUID()"
+      width="12"
+      height="12"
       className=" w-12 h-12 rounded-full object-cover "
     />,
   ];

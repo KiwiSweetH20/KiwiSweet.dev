@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "./supabase.ts";
+import { supabase } from "./supabase";
 
 export default function StatusCard() {
   const [online, setOnline] = useState(false);
@@ -19,31 +19,37 @@ export default function StatusCard() {
       .on("presence", { event: "sync" }, () => {
         const state = channel.presenceState();
 
-        const isOnline = Object.keys(state).length > 0;
+        const isOnline = state["genevieve"] !== undefined;
 
         setOnline(isOnline);
       })
+
       .on("presence", { event: "join" }, () => {
-        setOnline(true);
+        const state = channel.presenceState();
+
+        const isOnline = state["genevieve"] !== undefined;
+
+        setOnline(isOnline);
       })
+
       .on("presence", { event: "leave" }, () => {
         const state = channel.presenceState();
 
-        setOnline(Object.keys(state).length > 0);
+        const isOnline = state["genevieve"] !== undefined;
+
+        setOnline(isOnline);
       })
+
       .subscribe(async (status) => {
         if (status === "SUBSCRIBED") {
           await channel.track({
             user: "genevieve",
             online_at: new Date().toISOString(),
           });
-
-          setOnline(true);
         }
       });
 
     return () => {
-      channel.untrack();
       supabase.removeChannel(channel);
     };
   }, []);
