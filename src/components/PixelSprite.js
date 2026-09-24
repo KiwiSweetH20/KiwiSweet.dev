@@ -7,15 +7,12 @@ const SPRITE_SCALE = 2;
 const CONSTANT_SPEED = 2;
 
 const animations = {
-  sit: { row: 31, frames: 3, speed: 100 },
-  
-  // Cardinal Directions
+  sit: { row: 28, frames: 3, speed: 300 },
+  stroke: { row: 20, frames: 6, speed: 150 }, 
   runRight: { row: 6, frames: 8, speed: 100 },
   runLeft:  { row: 7, frames: 8, speed: 100 },
   runUp:    { row: 5, frames: 4, speed: 100 },
   runDown:  { row: 4, frames: 4, speed: 100 },
-
-  // Diagonal Directions
   runUpRight:   { row: 10, frames: 6, speed: 100 },
   runUpLeft:    { row: 11, frames: 6, speed: 100 },
   runDownRight: { row: 9, frames: 6, speed: 100 },
@@ -23,17 +20,45 @@ const animations = {
 };
 
 export default function MouseSprite() {
-  // Toggle state to enable or disable the cat entirely
   const [isEnabled, setIsEnabled] = useState(true);
+  
+  // --- ADDED FOR HYDRATION FIX ---
+  // Tracks whether the component has completely loaded into the browser viewport
+  const [hasMounted, setHasMounted] = useState(false);
 
   const spriteRef = useRef(null);
-  
-  // Set both starting coordinates to 0 so it stays put at top-left on refresh
   const mouse = useRef({ x: 50, y: 50 });
   const position = useRef({ x: 50, y: 50 });
-  
   const currentAnimation = useRef("sit");
   const frame = useRef(0);
+
+    // --- UPDATED HYDRATION HOOK (COMPILER SAFE) ---
+  useEffect(() => {
+    // Wrap the state updates in requestAnimationFrame to make them asynchronous
+    requestAnimationFrame(() => {
+      setHasMounted(true);
+      const savedPreference = localStorage.getItem("catSpriteEnabled");
+      if (savedPreference !== null) {
+        setIsEnabled(JSON.parse(savedPreference));
+      }
+    });
+  }, []);
+
+
+  const handleToggle = () => {
+    setIsEnabled((prev) => {
+      const nextState = !prev;
+      localStorage.setItem("catSpriteEnabled", JSON.stringify(nextState));
+      
+      if (nextState) {
+        position.current = { x: 50, y: 50 };
+        mouse.current = { x: 50, y: 50 };
+        currentAnimation.current = "sit";
+      }
+      
+      return nextState;
+    });
+  };
 
   /*
    * ==========================
@@ -41,7 +66,7 @@ export default function MouseSprite() {
    * ==========================
    */
   useEffect(() => {
-    if (!isEnabled) return; // Don't bind listeners if disabled
+    if (!hasMounted || !isEnabled) return;
 
     const handleMouseMove = (event) => {
       mouse.current.x = event.clientX;
@@ -50,7 +75,7 @@ export default function MouseSprite() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isEnabled]);
+  }, [isEnabled, hasMounted]);
 
   /*
    * ==========================
@@ -58,7 +83,7 @@ export default function MouseSprite() {
    * ==========================
    */
   useEffect(() => {
-    if (!isEnabled) return; // Stop physical physics tracking when disabled
+    if (!hasMounted || !isEnabled) return;
 
     let animationFrame;
 
@@ -88,7 +113,12 @@ export default function MouseSprite() {
       } else {
         position.current.x = mouse.current.x;
         position.current.y = mouse.current.y;
-        newAnimation = "sit";
+
+        if (currentAnimation.current === "sit") {
+          newAnimation = "sit";
+        } else {
+          newAnimation = "stroke";
+        }
       }
 
       if (newAnimation !== currentAnimation.current) {
@@ -120,7 +150,7 @@ export default function MouseSprite() {
 
     animationFrame = requestAnimationFrame(move);
     return () => cancelAnimationFrame(animationFrame);
-  }, [isEnabled]);
+  }, [isEnabled, hasMounted]);
 
   /*
    * ==========================
@@ -128,7 +158,7 @@ export default function MouseSprite() {
    * ==========================
    */
   useEffect(() => {
-    if (!isEnabled) return; // Stop frame iteration changes if disabled
+    if (!hasMounted || !isEnabled) return;
 
     const interval = setInterval(() => {
       if (!spriteRef.current) return;
@@ -143,24 +173,19 @@ export default function MouseSprite() {
     }, 100);
 
     return () => clearInterval(interval);
-  }, [isEnabled]);
+  }, [isEnabled, hasMounted]);
+
+  // --- ADDED FOR HYDRATION FIX ---
+  // Return an empty template on the server to prevent initial visual layout mismatches
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
-      {/* 
-        Action Trigger Button
-        Positioned exactly at X: 50px (left) and Y: 70px (top)
-      */}
       <button
-        onClick={() => {
-          setIsEnabled(!isEnabled);
-          // Optional: Reset position parameters back to 0 upon waking back up
-          if (!isEnabled) {
-            position.current = { x: 50, y: 50 };
-            mouse.current = { x: 50, y: 50 };
-          }
-        }}
-        className="fixed z-50 rounded bg-taupe-800 px-3 py-1.5 text-xs text-ctp-green shadow-md transition-colors hover:bg-ctp-green hover:text-taupe-900 active:scale-95"
+        onClick={handleToggle}
+        className="fixed z-50 rounded bg-taupe-900 px-3 py-1.5 text-xs text-ctp-green shadow-md transition-colors hover:bg-ctp-green hover:text-taupe-900 active:scale-95"
         style={{
           left: "10px",
           top: "70px",
@@ -169,7 +194,6 @@ export default function MouseSprite() {
         {isEnabled ? "Disable Cat" : "Enable Cat"}
       </button>
 
-      {/* Render the Sprite asset elements only when isEnabled validates to true */}
       {isEnabled && (
         <div
           ref={spriteRef}
