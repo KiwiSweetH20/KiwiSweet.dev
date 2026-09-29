@@ -43,12 +43,9 @@ export default function Intro() {
           <span className=" inline-flex text-ctp-green text-2xl">About Me</span>
         </div>
         <span>
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
+
+        I&apos;m learning and growing as a front-end developer, creating websites that are interactive, creative, and fun to use. I&apos;m always experimenting, learning new things, and turning ideas into something I can bring to life with code.
+
         </span>
         <IntroTools />
       </div>
