@@ -55,7 +55,7 @@ export default function StatusCard() {
   }, []);
 
   return (
-    <fieldset className=" relative border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-950/20 ">
+    <fieldset className=" relative border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 my-2 bg-taupe-950/20 ">
       <span className="absolute flex size-4 -top-5 right-1">
         <span
           className={`absolute inline-flex h-full w-full rounded-full ${

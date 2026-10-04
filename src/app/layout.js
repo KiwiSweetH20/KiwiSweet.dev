@@ -14,11 +14,23 @@ const comicRelief = Comic_Relief({
   fallback: ['Comic Sans MS', 'sans-serif', 'arial'], 
 })
 
+export const metadata = {
+  title: "KiwiSweet.dev",
+  description: "Front-end developer portfolio",
+};
+
+// --- ADD THIS VIEWPORT EXPORT TO FIX THE MOBILE ZOOM ---
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1, // Optional: Prevents auto-zooming when clicking input forms
+};
+
 
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-taupe-950 text-ctp-subtext1 ${comicRelief.variable}`}>
+      <body className={`bg-taupe-950 text-ctp-subtext1 ${comicRelief.variable} antialiased min-h-screen w-full overflow-x-hidden`}>
         <Navbar/>
         {children}
         <Footer/>

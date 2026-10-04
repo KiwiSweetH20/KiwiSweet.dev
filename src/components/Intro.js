@@ -30,7 +30,7 @@ export default function Intro() {
   return (
     <div className="flex flex-row border-ctp-green border-2 rounded-2xl w-3/4 mx-auto bg-taupe-900/20 shadow-xl shadow-ctp-green/10">
       <div className="basis-1/7 p-3 flex flex-col items-center">
-        <div className="">{Pfp}</div>
+        <div className="p-3">{Pfp}</div>
         <StatusCard />
         <Socials />
         <Clock />
@@ -38,15 +38,20 @@ export default function Intro() {
       <div className="basis-6/7 p-3 flex flex-col">
         <span className="text-ctp-green text-2xl">Genevieve</span>
         <span className="">A.K.A KiwiSweet</span>
-        <div className="inline-flex items-center">
-          {kiwiIcon}
-          <span className=" inline-flex text-ctp-green text-2xl">About Me</span>
+        <div className="flex flex-col my-2">
+          <div className="inline-flex items-center my-1">
+            {kiwiIcon}
+            <span className=" inline-flex text-ctp-green text-2xl">
+              About Me
+            </span>
+          </div>
+          <span className="m-1">
+            I&apos;m learning and growing as a front-end developer, creating
+            websites that are interactive, creative, and fun to use. I&apos;m
+            always experimenting, learning new things, and turning ideas into
+            something I can bring to life with code.
+          </span>
         </div>
-        <span>
-
-        I&apos;m learning and growing as a front-end developer, creating websites that are interactive, creative, and fun to use. I&apos;m always experimenting, learning new things, and turning ideas into something I can bring to life with code.
-
-        </span>
         <IntroTools />
       </div>
     </div>

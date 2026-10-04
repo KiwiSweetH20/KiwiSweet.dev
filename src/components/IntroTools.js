@@ -225,12 +225,12 @@ export default function IntroTools() {
     },
   ];
   return (
-    <>
-      <div className="inline-flex items-center">
+    <div>
+      <div className="inline-flex items-center mt-2">
         {kiwiIcon}
         <span className=" inline-flex text-ctp-green text-2xl">Tools</span>
       </div>
-      <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-950/20">
+      <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-3 my-1 bg-taupe-950/20">
         <legend className="text-ctp-green text-2xl">Languages</legend>
         <div className="inline-flex flex-row items-center">
           {LangInfo.map((tools) => (
@@ -238,7 +238,7 @@ export default function IntroTools() {
           ))}
       </div>
       </fieldset>
-      <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 bg-taupe-950/20">
+      <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-3 my-3 bg-taupe-950/20">
       <legend className="text-ctp-green text-2xl">Frameworks</legend>
         <div className="inline-flex flex-row items-center">
           {FrameInfo.map((tools) => (
@@ -246,13 +246,13 @@ export default function IntroTools() {
           ))}
         </div>
         </fieldset>
-    </>
+    </div>
   );
 }
 
 function ToolItems({ tool, icon }) {
   return (
-    <div className="mt-2 ml-1 gap-2 border-2 border-taupe-800 bg-taupe-800/30 rounded-3xl p-2 inline-flex items-center w-fit">
+    <div className="mt-2 ml-3 gap-2 border-2 border-taupe-800 bg-taupe-800/30 rounded-3xl p-2 inline-flex items-center w-fit">
       {icon}{tool}
     </div>
   );
