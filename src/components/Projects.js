@@ -43,7 +43,7 @@ export default function Projects() {
           Projects
         </span>
       </div>
-      <div className="flex flex-col sm:flex-row rounded-2xl w-3/4 mx-auto m-5 sm:h-fit">
+      <div className="flex flex-col rounded-2xl sm:flex-row w-full md:w-3xl lg:w-3/4 text-center md:text-left lg:text-left h-150 sm:h-fit md:h-fit lg:h-50 mx-auto m-5">
         {myProjects.map((project) => (
           <ProjectBox
             key={project.id}
@@ -81,7 +81,7 @@ function ProjectBox({ title, description, link, gitLink, site }) {
   ];
 
   return (
-    <div className=" group relative overflow-hidden border-taupe-900 border-2 basis-6xl h-40 md:h-50 sm:h-60  rounded-2xl mx-5 m-5 hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
+    <div className=" group relative overflow-hidden border-taupe-900 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
       <div className="group-hover:blur-xs p-3 flex flex-col hover:bg-taupe-900/30">
         <span className="text-ctp-green pb-2 font-bold text-2xl m-2">
           {title}

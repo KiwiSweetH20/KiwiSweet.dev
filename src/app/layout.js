@@ -1,5 +1,6 @@
 import React from "react";
 import "./global.css";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -14,18 +15,16 @@ const comicRelief = Comic_Relief({
   fallback: ['Comic Sans MS', 'sans-serif', 'arial'], 
 })
 
-export const metadata = {
-  title: "KiwiSweet.dev",
-  description: "Front-end developer portfolio",
-};
-
-// --- ADD THIS VIEWPORT EXPORT TO FIX THE MOBILE ZOOM ---
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1, // Optional: Prevents auto-zooming when clicking input forms
-};
+  maximumScale: 1, 
+}
 
+export const metadata = {
+  title: "KiwiSweet.dev",
+  description: "Front-end developer portfolio",
+}
 
 function RootLayout({ children }) {
   return (
