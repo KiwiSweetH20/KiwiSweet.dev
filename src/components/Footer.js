@@ -18,7 +18,7 @@ export default function Footer() {
     };
   }, []);
   return (
-    <nav className="flex flex-row p-5 w-3/4 mx-auto left-1/2 border-2 border-ctp-green m-5 rounded-2xl bg-taupe-900/20">
+    <nav className="flex flex-col md:flex-row lg:flex-row items-center md:place-items-center p-5 w-3/4 mx-auto left-1/2 border-2 border-ctp-green m-5 rounded-2xl bg-taupe-900/20">
       <div className="basis-1/3 items-center justify-center">
         <p className="">@ 2026 Genevieve Van Niekerk</p>
       </div>
