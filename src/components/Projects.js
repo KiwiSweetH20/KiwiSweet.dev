@@ -30,8 +30,8 @@ export default function Projects() {
     },
   ];
   return (
-    <>
-      <div className="flex flex-row rounded-2xl w-3/4 mx-auto mt-20">
+    <div className="p-20 flex flex-col w-full h-fit justify-center">
+      <div className="inline-flex rounded-2xl mx-auto items-center md:items-left lg:items-left">
         <Image
           src="/Kiwi.svg"
           alt="Me"
@@ -39,11 +39,11 @@ export default function Projects() {
           height="12"
           className="w-12 h-12 rounded-full object-cover "
         />
-        <span className="text-ctp-green text-4xl font-bold inline-flex items-center">
+        <span className="text-ctp-green inline-flex text-4xl font-bold ">
           Projects
         </span>
       </div>
-      <div className="flex flex-col rounded-2xl sm:flex-row w-full md:w-3xl lg:w-3/4 text-center md:text-left lg:text-left h-150 sm:h-fit md:h-fit lg:h-50 mx-auto m-5">
+      <div className="flex flex-col rounded-2xl sm:flex-row w-full md:w-3xl lg:w-3/4 text-center md:text-left lg:text-left h-150 sm:h-fit md:h-fit lg:h-50 mx-auto mt-5">
         {myProjects.map((project) => (
           <ProjectBox
             key={project.id}
@@ -55,7 +55,7 @@ export default function Projects() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

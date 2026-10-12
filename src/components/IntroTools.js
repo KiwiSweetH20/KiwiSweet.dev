@@ -228,32 +228,36 @@ export default function IntroTools() {
     <div>
       <div className="inline-flex items-center mt-2">
         {kiwiIcon}
-        <span className=" inline-flex text-ctp-green text-2xl">Tools</span>
+        <span className=" inline-flex text-ctp-green text-2xl font-bold">Tools</span>
       </div>
-      <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-3 my-1 bg-taupe-950/20">
+      <div className="my-4">
+      <fieldset className=" w-fit h-fit rounded-2xl p-3 my-1">
         <legend className="text-ctp-green text-2xl">Languages</legend>
-        <div className="inline-flex flex-row items-center">
+        <div className="inline-flex flex-row items-center gap-3">
           {LangInfo.map((tools) => (
             <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
           ))}
       </div>
       </fieldset>
-      <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-3 my-3 bg-taupe-950/20">
-      <legend className="text-ctp-green text-2xl">Frameworks</legend>
-        <div className="inline-flex flex-row items-center">
+      </div>
+      <div className="my-6">
+      <fieldset className=" w-fit h-fit rounded-2xl p-3 my-3 ">
+      <legend className="text-ctp-green text-2xl ">Frameworks</legend>
+        <div className="inline-flex flex-row items-center gap-3">
           {FrameInfo.map((tools) => (
             <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
           ))}
         </div>
         </fieldset>
+        </div>
     </div>
   );
 }
 
 function ToolItems({ tool, icon }) {
   return (
-    <div className="mt-2 ml-3 gap-2 border-2 border-taupe-800 bg-taupe-800/30 rounded-3xl p-2 inline-flex items-center w-fit">
-      {icon}{tool}
+    <div className="mt-1 border-2 border-taupe-800 bg-taupe-800/30 rounded-4xl p-3 inline-flex items-center w-fit">
+      {icon}{" "}{tool}
     </div>
   );
 }
