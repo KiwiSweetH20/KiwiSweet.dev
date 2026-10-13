@@ -28,6 +28,7 @@ export default function Footer() {
           {time ? format(time, "hh:mm:ss") : "---"}
         </p>
 
+        {/* socials */}
         <div className="flex flex-row items-center justify-center px-2 gap-2">
           <a
             href="https://github.com/KiwiSweetH20"
