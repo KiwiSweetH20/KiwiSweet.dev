@@ -7,37 +7,39 @@ export default function Page() {
   return (
     <div>
       {/* <MainBackground className="-z-10" /> */}
-      <div className=" flex flex-col items-center justify-center w-full max-w-5xl mx-auto py-32 font-(family-name:--font-comic-relief)">
-        <div className="flex flex-row justify-center w-full border-2 p-5 gap-5">
+      <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-32 font-(family-name:--font-comic-relief)">
+        <div className="flex flex-row justify-center w-full p-5 gap-5">
           <div className="basis-1/3 ">
             <Image
               src="/Gen.jpeg"
               alt="Me"
               key="crypto.randomUUID()"
-              width="480"
-              height="500"
-              className="rounded-l-md"
+              width="280"
+              height="300"
+              className=" h-auto w-auto rounded-md"
             />
           </div>
-          <div className="flex flex-col gap-5 justify-start basis-2/3 border-2">
+          <div className="flex flex-col gap-5 justify-around items-baseline basis-2/3 ">
             <div className="flex-col text-lg text-justify  px-3">
               <p className="pb-6">
-                I&apos;m a creative-minded web developer who enjoys bringing
-                ideas to life through code and design.
+                I&apos;m a creative and driven individual with a passion for
+                bringing ideas to life through technology and design.
               </p>
               <p className="pb-6">
-                With experience using JavaScript, React, Tailwind CSS, and
-                GitHub, I&apos;m building my skills in creating modern,
-                responsive, and interactive web experiences.
+                I enjoy exploring new possibilities, thinking outside the box,
+                and finding creative solutions to challenges. I&apos;m naturally
+                curious and always eager to learn, pushing myself beyond my
+                comfort zone to develop new skills and turn unfamiliar problems
+                into opportunities for growth.
               </p>
               <p className="pb-6">
-                I love exploring new possibilities, experimenting with ideas,
-                and finding creative ways to solve problems. My goal is to
-                combine design and technology to create digital experiences that
-                are not only functional but memorable.
+                I believe that creativity, determination, and a willingness to
+                figure things out can take an idea a long way. I&apos;m excited
+                to contribute fresh perspectives, embrace new challenges, and
+                grow alongside a team where I can make a meaningful impact.
               </p>
             </div>
-            <div className="flex flex-row items-center justify-center px-2 gap-2">
+            <div className="flex flex-row items-center justify-center gap-2">
               <a
                 href="https://github.com/KiwiSweetH20"
                 target="_blank"
@@ -107,7 +109,7 @@ export default function Page() {
           </div>
         </div>
         <div>
-          <IntroTools />
+          <IntroTools/>
         </div>
       </div>
     </div>

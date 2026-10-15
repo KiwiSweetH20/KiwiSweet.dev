@@ -225,14 +225,14 @@ export default function IntroTools() {
     },
   ];
   return (
-    <div>
-      <div className="inline-flex items-center mt-2">
+    <div className="flex flex-col items-start justify-baseline">
+      <div className="inline-flex items-center my-2">
         {kiwiIcon}
-        <span className=" inline-flex text-ctp-green text-2xl font-bold">Tools</span>
+        <span className=" inline-flex text-ctp-green text-3xl font-bold">Tools</span>
       </div>
       <div className="my-4">
-      <fieldset className=" w-fit h-fit rounded-2xl p-3 my-1">
-        <legend className="text-ctp-green text-2xl">Languages</legend>
+      <fieldset className=" w-fit h-fit rounded-2xl">
+        <legend className="text-ctp-green text-2xl pb-2">Languages</legend>
         <div className="inline-flex flex-row items-center gap-3">
           {LangInfo.map((tools) => (
             <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
@@ -240,9 +240,9 @@ export default function IntroTools() {
       </div>
       </fieldset>
       </div>
-      <div className="my-6">
-      <fieldset className=" w-fit h-fit rounded-2xl p-3 my-3 ">
-      <legend className="text-ctp-green text-2xl ">Frameworks</legend>
+      <div className="my-4">
+      <fieldset className=" w-fit h-fit rounded-2xl">
+      <legend className="text-ctp-green text-2xl pb-2">Frameworks</legend>
         <div className="inline-flex flex-row items-center gap-3">
           {FrameInfo.map((tools) => (
             <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />

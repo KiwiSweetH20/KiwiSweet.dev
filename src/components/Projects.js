@@ -43,7 +43,7 @@ export default function Projects() {
           Projects
         </span>
       </div>
-      <div className="flex flex-col rounded-2xl sm:flex-row w-full md:w-3xl lg:w-3/4 text-center md:text-left lg:text-left h-150 sm:h-fit md:h-fit lg:h-50 mx-auto mt-5">
+      <div className="flex flex-col mx-auto rounded-2xl md:flex-row lg:flex-row w-full sm:max-w-full md:max-w-4xl lg:max-w-4xl text-center md:text-left lg:text-left h-190 sm:h-150 md:h-fit lg:h-fit mt-5">
         {myProjects.map((project) => (
           <ProjectBox
             key={project.id}
@@ -81,22 +81,22 @@ function ProjectBox({ title, description, link, gitLink, site }) {
   ];
 
   return (
-    <div className=" group relative overflow-hidden border-taupe-900 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green">
+    <div className=" group relative overflow-hidden border-taupe-900 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl shadow-ctp-green/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-ctp-green w-full">
       <div className="group-hover:blur-xs p-3 flex flex-col hover:bg-taupe-900/30">
         <span className="text-ctp-green pb-2 font-bold text-2xl m-2">
           {title}
         </span>
         <span className="mb-2 mx-2">{description}</span>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-taupe-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-taupe-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 ">
         <span className="inline-flex items-center text-ctp-green font-bold text-2xl">
-          <a href={gitLink} target="_blank" rel="noopener noreferrer" className="inline-flex hover:text-taupe-500 transition-colors duration-300">
+          <a href={gitLink} target="_blank" rel="noopener noreferrer" className="inline-flex hover:text-taupe-500 transition-colors duration-300 ">
             {gitIcon}{link}
           </a>
         </span>
         <button className=" m-3 p-0.5 px-2 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out">
           <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <a href={site} target="_blank" rel="noopener noreferrer" className="text-taupe-500 font-bold inline-flex items-center">
+            <a href={site} target="_blank" rel="noopener noreferrer" className="text-taupe-500 font-bold inline-flex items-center hy-auto">
             Site <ExternalLink size={20}/> 
           </a>
           </span>
