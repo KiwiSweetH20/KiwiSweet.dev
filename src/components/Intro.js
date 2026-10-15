@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Clock from "./Clock.js";
+import Time from "./Time.js";
 import Socials from "./Socials.js";
 import StatusCard from "./StatusCard.js";
 
@@ -32,16 +32,20 @@ export default function Intro() {
         <div className="">{Pfp}</div>
         <StatusCard />
         <Socials />
-        <Clock />
       </div>
       <div className="basis-4/5 p-3 flex flex-col">
-        <span className="text-ctp-green text-2xl">Genevieve</span>
-        <span className="">A.K.A KiwiSweet</span>
+        <div className="flex flex-row justify-between items-center gap-3">
+          <div className="flex flex-col">
+            <span className="text-ctp-green text-2xl">Genevieve</span>
+            <span className="">A.K.A KiwiSweet</span>
+          </div>
+          <Time />
+        </div>
         <div className="flex flex-col my-2">
           <div className="inline-flex items-center my-1">
             {kiwiIcon}
             <span className=" inline-flex text-ctp-green text-2xl">
-              About Me
+              Hi! I&apos;m Genevieve
             </span>
           </div>
           <span className="m-1">
