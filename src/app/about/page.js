@@ -8,8 +8,11 @@ export default function Page() {
     <div>
       {/* <MainBackground className="-z-10" /> */}
       <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-32 font-(family-name:--font-comic-relief)">
+          <div className="flex justify-baseline w-full px-5">
+            <p className=" text-4xl text-ctp-green font-bold">About Me</p>
+          </div>
         <div className="flex flex-row justify-center w-full p-5 gap-5">
-          <div className="basis-1/3 ">
+          <div className="basis-1/3 items-baseline">
             <Image
               src="/Gen.jpeg"
               alt="Me"
@@ -109,7 +112,7 @@ export default function Page() {
           </div>
         </div>
         <div>
-          <IntroTools/>
+          <IntroTools />
         </div>
       </div>
     </div>
