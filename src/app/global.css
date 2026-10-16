@@ -1,12 +1,80 @@
 @import "tailwindcss";
-@import "@catppuccin/tailwindcss/mocha.css";
 
-@layer base {
-  body {
-    background-color: var(--color-ctp-base);
-    color: var(--color-ctp-text);
+/* 1. DEFINE ALL COLOR SCALES (LIGHT MODE BY DEFAULT) */
+:root {
+  /* Slate Grays */
+  --slate-1: #fcfcfd;
+  --slate-2: #f9f9fb;
+  --slate-3: #f1f3f5;
+  --slate-6: #e6e8eb;
+  --slate-11: #646d7a;
+  --slate-12: #111827;
+
+  /* Indigo Accents */
+  --indigo-1: #fbfbfe;
+  --indigo-3: #edf2fe;
+  --indigo-6: #cbd5fe;
+  --indigo-9: #3e63dd;
+  --indigo-11: #3451b2;
+
+  /* Kiwi Green */
+  --kiwi-1: #fdfdfb;
+  --kiwi-3: #f3f6e3;
+  --kiwi-6: #d6e5a6;
+  --kiwi-9: #bdee63;
+  --kiwi-11: #5b7616;
+}
+
+/* 2. AUTOMATIC SYSTEM DARK MODE SWAPPING */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --slate-1: #111113;
+    --slate-2: #18181b;
+    --slate-3: #232326;
+    --slate-6: #34343a;
+    --slate-11: #9ba1a6;
+    --slate-12: #ecedee;
+
+    --indigo-1: #0f111a;
+    --indigo-3: #161f40;
+    --indigo-6: #283973;
+    --indigo-9: #3e63dd;
+    --indigo-11: #8da4ef;
+
+    --kiwi-1: #0d130a;
+    --kiwi-3: #172212;
+    --kiwi-6: #2b3d22;
+    --kiwi-9: #bdee63;
+    --kiwi-11: #b4e44e;
   }
 }
 
-/* Tailwind v4 automatically maps dark mode to the CSS .dark class or the @media (prefers-color-scheme: dark) strategy.
-The @catppuccin/tailwindcss plugin automatically switches tokens when the parent wrapper changes. */
+/* 3. MAP THE VARIABLES TO TAILWIND CLASS NAMES */
+@theme {
+  --color-slate-1: var(--slate-1);
+  --color-slate-2: var(--slate-2);
+  --color-slate-3: var(--slate-3);
+  --color-slate-6: var(--slate-6);
+  --color-slate-11: var(--slate-11);
+  --color-slate-12: var(--slate-12);
+
+  --color-indigo-1: var(--indigo-1);
+  --color-indigo-3: var(--indigo-3);
+  --color-indigo-6: var(--indigo-6);
+  --color-indigo-9: var(--indigo-9);
+  --color-indigo-11: var(--indigo-11);
+
+  --color-kiwi-1: var(--kiwi-1);
+  --color-kiwi-3: var(--kiwi-3);
+  --color-kiwi-6: var(--kiwi-6);
+  --color-kiwi-9: var(--kiwi-9);
+  --color-kiwi-11: var(--kiwi-11);
+}
+
+/* 4. SET GLOBAL APPCANVAS STYLES */
+@layer base {
+  body {
+    background-color: var(--color-slate-1);
+    color: var(--color-slate-12);
+  }
+}
