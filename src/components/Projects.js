@@ -39,7 +39,7 @@ export default function Projects() {
           height="12"
           className="w-12 h-12 rounded-full object-cover "
         />
-        <span className="text-kiwi-9 inline-flex text-4xl font-bold ">
+        <span className="dark:text-kiwi-9 text-taupe-800 inline-flex text-4xl font-bold ">
           Projects
         </span>
       </div>
@@ -81,22 +81,22 @@ function ProjectBox({ title, description, link, gitLink, site }) {
   ];
 
   return (
-    <div className=" group relative overflow-hidden border-taupe-900 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl shadow-kiwi-9/10 hover:scale-105 transition-transform duration-300 ease-in-out hover:border-kiwi-9 w-full">
-      <div className="group-hover:blur-xs p-3 flex flex-col hover:bg-taupe-900/30">
-        <span className="text-kiwi-9 pb-2 font-bold text-2xl m-2">
+    <div className=" group relative overflow-hidden dark:border-taupe-900 border-kiwi-11 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl dark:shadow-kiwi-9/10 shadow-taupe-800/40 hover:scale-105 transition-transform duration-300 ease-in-out dark:hover:border-kiwi-9 hover:border-taupe-800 w-full">
+      <div className="group-hover:blur-xs p-3 flex flex-col dark:hover:bg-taupe-900/30 hover:bg-kiwi-11/30 transition-colors duration-300">
+        <span className="dark:text-kiwi-9 text-taupe-800 pb-2 font-bold text-2xl m-2">
           {title}
         </span>
-        <span className="mb-2 mx-2">{description}</span>
+        <span className="mb-2 mx-2 dark:text-taupe-400 text-kiwi-11">{description}</span>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-taupe-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 ">
-        <span className="inline-flex items-center text-kiwi-9 font-bold text-2xl">
-          <a href={gitLink} target="_blank" rel="noopener noreferrer" className="inline-flex hover:text-taupe-500 transition-colors duration-300 ">
+      <div className="absolute inset-0 flex flex-col items-center justify-center dark:hover:bg-taupe-950/60 hover:bg-kiwi-11/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 ">
+        <span className="inline-flex items-center dark:text-kiwi-9 text-taupe-800 font-bold text-2xl">
+          <a href={gitLink} target="_blank" rel="noopener noreferrer" className="inline-flex dark:hover:text-taupe-500 hover:text-taupe-700 transition-colors duration-300 ">
             {gitIcon}{link}
           </a>
         </span>
         <button className=" m-3 p-0.5 px-2 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out">
           <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <a href={site} target="_blank" rel="noopener noreferrer" className="text-taupe-500 font-bold inline-flex items-center hy-auto">
+            <a href={site} target="_blank" rel="noopener noreferrer" className="dark:text-taupe-500 text-taupe-700 font-bold inline-flex items-center hy-auto">
             Site <ExternalLink size={20}/> 
           </a>
           </span>

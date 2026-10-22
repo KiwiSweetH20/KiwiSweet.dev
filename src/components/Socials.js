@@ -32,7 +32,7 @@ export default function Socials() {
     },
   ];
   return (
-    <fieldset className="border-2 border-taupe-800 w-fit h-fit rounded-2xl p-2 my-2 bg-taupe-950/20">
+    <fieldset className="border-2 dark:border-taupe-800 border-taupe-900 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-950/20 bg-taupe-900">
       <legend className="text-kiwi-9">Socials</legend>
       <div>
         <ul className="grid grid-cols-3 gap-2">
