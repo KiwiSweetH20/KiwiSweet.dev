@@ -59,23 +59,23 @@ export default function StatusCard() {
       <span className="absolute flex size-4 -top-5 right-1">
         <span
           className={`absolute inline-flex h-full w-full rounded-full ${
-            online ? "bg-ctp-green opacity-75 animate-ping " : "hidden"
+            online ? "bg-kiwi-9 opacity-75 animate-ping " : "hidden"
           }`}
         ></span>
         <span
           className={`relative inline-flex size-4 rounded-full ${
-            online ? "bg-ctp-green" : "bg-taupe-800"
+            online ? "bg-kiwi-9" : "bg-taupe-800"
           }`}
         ></span>
       </span>
-      <legend className="text-ctp-green">Status</legend>
+      <legend className="text-kiwi-9">Status</legend>
       <div>
         <div
           className={`absolute  h-5 w-5 rounded-full transition-all duration-300 `}
         />
         <span className="text-center">
           I&apos;M{" "}
-          <span className="text-ctp-green font-bold">
+          <span className="text-kiwi-9 font-bold">
             {online ? "ONLINE" : "OFFLINE"}
           </span>
         </span>

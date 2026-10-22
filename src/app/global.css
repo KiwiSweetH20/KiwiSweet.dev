@@ -2,7 +2,7 @@
 
 /* 1. DEFINE ALL COLOR SCALES (LIGHT MODE BY DEFAULT) */
 :root {
-  /* Slate Grays */
+  /* Slate Grays (Unchanged) */
   --slate-1: #fcfcfd;
   --slate-2: #f9f9fb;
   --slate-3: #f1f3f5;
@@ -10,24 +10,25 @@
   --slate-11: #646d7a;
   --slate-12: #111827;
 
-  /* Indigo Accents */
+  /* Indigo Accents (Unchanged) */
   --indigo-1: #fbfbfe;
   --indigo-3: #edf2fe;
   --indigo-6: #cbd5fe;
   --indigo-9: #3e63dd;
   --indigo-11: #3451b2;
 
-  /* Kiwi Green */
-  --kiwi-1: #fdfdfb;
-  --kiwi-3: #f3f6e3;
-  --kiwi-6: #d6e5a6;
-  --kiwi-9: #bdee63;
-  --kiwi-11: #5b7616;
+  /* YOUR EXACT CATPPUCCIN KIWI GREEN (LIGHT MODE) */
+  --kiwi-1: #fbfdfb;   /* Very subtle background canvas tint */
+  --kiwi-3: #e5f7e3;   /* Clean card / badge background */
+  --kiwi-6: #c6ecc2;   /* Elegant structural border */
+  --kiwi-9: #A6E3A1;   /* 👈 YOUR EXACT PICKER GREEN FOR SOLID ELEMENTS */
+  --kiwi-11: #255821;  /* Deep high-contrast readable text */
 }
 
 /* 2. AUTOMATIC SYSTEM DARK MODE SWAPPING */
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Slate Grays (Unchanged) */
     --slate-1: #111113;
     --slate-2: #18181b;
     --slate-3: #232326;
@@ -35,17 +36,19 @@
     --slate-11: #9ba1a6;
     --slate-12: #ecedee;
 
+    /* Indigo Accents (Unchanged) */
     --indigo-1: #0f111a;
     --indigo-3: #161f40;
     --indigo-6: #283973;
     --indigo-9: #3e63dd;
     --indigo-11: #8da4ef;
 
-    --kiwi-1: #0d130a;
-    --kiwi-3: #172212;
-    --kiwi-6: #2b3d22;
-    --kiwi-9: #bdee63;
-    --kiwi-11: #b4e44e;
+    /* YOUR EXACT CATPPUCCIN KIWI GREEN (DARK MODE SHIFT) */
+    --kiwi-1: #0d120d;   /* Midnight slate background tint */
+    --kiwi-3: #152614;   /* Deep badge background */
+    --kiwi-6: #233f21;   /* Dark element outline / border */
+    --kiwi-9: #A6E3A1;   /* 👈 Stays vibrant and pops beautifully on dark screens */
+    --kiwi-11: #d2f4cf;  /* High-contrast soft glowing text */
   }
 }
 
