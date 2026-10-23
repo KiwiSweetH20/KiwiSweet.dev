@@ -27,7 +27,7 @@ export default function Intro() {
   ];
 
   return (
-    <div className="flex flex-row dark:border-kiwi-9 border-kiwi-6 border-2 rounded-2xl w-full max-w-4xl md:p-4 mx-auto dark:bg-taupe-900/20 bg-kiwi-3 shadow-xl dark:shadow-kiwi-9/10 shadow-taupe-800/40">
+    <div className="flex flex-row dark:border-kiwi-9 border-taupe-800 border-2 rounded-2xl w-full max-w-4xl md:p-4 mx-auto dark:bg-taupe-900/20 bg-kiwi-3/70 shadow-xl dark:shadow-kiwi-9/10 shadow-taupe-800/40">
       <div className="basis-1/5 p-3 flex flex-col items-center">
         <div className="">{Pfp}</div>
         <StatusCard />

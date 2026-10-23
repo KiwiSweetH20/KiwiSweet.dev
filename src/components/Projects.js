@@ -86,7 +86,7 @@ function ProjectBox({ title, description, link, gitLink, site }) {
         <span className="dark:text-kiwi-9 text-taupe-800 pb-2 font-bold text-2xl m-2">
           {title}
         </span>
-        <span className="mb-2 mx-2 dark:text-taupe-400 text-kiwi-11">{description}</span>
+        <span className="mb-2 mx-2 dark:text-taupe-400 text-taupe-800">{description}</span>
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center dark:hover:bg-taupe-950/60 hover:bg-kiwi-6/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 ">
         <span className="inline-flex items-center dark:text-kiwi-9 text-taupe-800 font-bold text-2xl">

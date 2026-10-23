@@ -18,8 +18,8 @@ export default function Footer() {
     };
   }, []);
   return (
-    <nav className="flex flex-col gap-2 md:flex-row lg:flex-row items-center md:place-items-center p-5 w-3/4 mx-auto left-1/2 border-2 dark:border-kiwi-9 border-taupe-800 m-5 rounded-2xl dark:bg-taupe-900/20 bg-kiwi-3">
-      <div className="basis-1/3 items-center justify-center dark:text-taupe-400 text-kiwi-11">
+    <nav className="flex flex-col gap-2 md:flex-row lg:flex-row items-center md:place-items-center p-5 w-3/4 mx-auto left-1/2 border-2 dark:border-kiwi-9 border-taupe-800 m-5 rounded-2xl dark:bg-taupe-900/20 bg-kiwi-3/70">
+      <div className="basis-1/3 items-center justify-center dark:text-taupe-400 text-taupe-800">
         <p>@ 2026 Genevieve Van Niekerk</p>
       </div>
 
