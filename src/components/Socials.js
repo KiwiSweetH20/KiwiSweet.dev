@@ -32,8 +32,8 @@ export default function Socials() {
     },
   ];
   return (
-    <fieldset className="border-2 dark:border-taupe-800 border-taupe-900 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-950/20 bg-taupe-900">
-      <legend className="text-kiwi-9">Socials</legend>
+    <fieldset className="border-2 dark:border-taupe-800 border-taupe-800 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-950/20 bg-kiwi-3">
+      <legend className="dark:text-kiwi-9 text-taupe-800">Socials</legend>
       <div>
         <ul className="grid grid-cols-3 gap-2">
           {iconInfo.map((info) => (
@@ -59,8 +59,8 @@ function SocialIcons({ icon, link, tooltip }) {
       rel="noopener noreferrer"
       className="group relative inline-block cursor-pointer"
     >
-      <span className="text-kiwi-9">{icon}</span>
-      <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md bg-taupe-800/40 backdrop-blur-sm px-3 py-1.5 text-sm text-kiwi-9 opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap border-kiwi-9 border-2">
+      <span className="dark:text-kiwi-9 text-taupe-800">{icon}</span>
+      <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md bg-kiwi-3/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-taupe-800 border-2">
         {tooltip}
       </span>
     </a>

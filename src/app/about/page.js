@@ -9,7 +9,7 @@ export default function Page() {
       {/* <MainBackground className="-z-10" /> */}
       <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-32 font-(family-name:--font-comic-relief)">
         <div className="flex justify-baseline w-full px-5">
-          <p className=" text-4xl dark:text-kiwi-9 text-taupe-800 font-bold">
+          <p className=" text-4xl dark:text-kiwi-9 text-kiwi-11 font-bold">
             About Me
           </p>
         </div>
@@ -53,10 +53,10 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="group relative inline-block cursor-pointer"
               >
-                <span className="dark:text-kiwi-9 text-taupe-800">
+                <span className="dark:text-kiwi-9 text-kiwi-11">
                   <GitHub />
                 </span>
-                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-9/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-taupe-800 border-2">
+                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-6/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-kiwi-11 border-2">
                   GitHub
                 </span>
               </a>
@@ -66,10 +66,10 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="group relative inline-block cursor-pointer"
               >
-                <span className="dark:text-kiwi-9 text-taupe-800">
+                <span className="dark:text-kiwi-9 text-kiwi-11">
                   <Linkedin />
                 </span>
-                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-9/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-taupe-800 border-2">
+                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-6/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-kiwi-11 border-2">
                   LinkedIn
                 </span>
               </a>
@@ -79,7 +79,7 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="group relative inline-block cursor-pointer"
               >
-                <span className="dark:text-kiwi-9 text-taupe-800">
+                <span className="dark:text-kiwi-9 text-kiwi-11">
                   <svg
                     xmlns="http://w3.org"
                     viewBox="0 0 24 24"
@@ -90,7 +90,7 @@ export default function Page() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </span>
-                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-9/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-taupe-800 border-2">
+                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-6/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-kiwi-11 border-2">
                   X
                 </span>
               </a>
@@ -100,7 +100,7 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="group relative inline-block cursor-pointer"
               >
-                <span className="dark:text-kiwi-9 text-taupe-800">
+                <span className="dark:text-kiwi-9 text-kiwi-11">
                   <svg width="25" height="25" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -108,7 +108,7 @@ export default function Page() {
                     ></path>
                   </svg>
                 </span>
-                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-9/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-taupe-800 border-2">
+                <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-800/40 bg-kiwi-6/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-kiwi-11 border-2">
                   BlueSky
                 </span>
               </a>

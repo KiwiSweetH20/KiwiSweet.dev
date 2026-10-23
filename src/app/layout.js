@@ -29,7 +29,7 @@ export const metadata = {
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-kiwi-9 dark:bg-taupe-950 text-taupe-400 ${comicRelief.variable} antialiased min-h-screen w-full overflow-x-hidden`}>
+      <body className={`bg-taupe-100 dark:bg-taupe-950 text-taupe-400 ${comicRelief.variable} antialiased min-h-screen w-full overflow-x-hidden`}>
         <Navbar/>
         {children}
         <Footer/>

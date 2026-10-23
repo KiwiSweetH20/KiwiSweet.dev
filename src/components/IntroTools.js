@@ -197,7 +197,7 @@ export default function IntroTools() {
 
 function ToolItems({ tool, icon }) {
   return (
-    <div className="mt-1 border-2 border-taupe-800 dark:bg-taupe-800/30 bg-kiwi-11/30 rounded-4xl p-3 inline-flex items-center w-fit dark:text-taupe-400 text-taupe-800">
+    <div className="mt-1 border-2 border-taupe-800 dark:bg-taupe-800/30 bg-kiwi-3 rounded-4xl p-3 inline-flex items-center w-fit dark:text-taupe-400 text-taupe-800">
       {icon}{" "}{tool}
     </div>
   );

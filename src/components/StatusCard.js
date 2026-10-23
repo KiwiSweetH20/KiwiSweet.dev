@@ -55,16 +55,16 @@ export default function StatusCard() {
   }, []);
 
   return (
-    <fieldset className=" relative border-2 border-taupe-900 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-950/20 bg-taupe-700/20">
+    <fieldset className=" relative border-2 border-taupe-900 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-950/20 bg-kiwi-2">
       <span className="absolute flex size-4 -top-5 right-1">
         <span
           className={`absolute inline-flex h-full w-full rounded-full ${
-            online ? "bg-kiwi-9 opacity-75 animate-ping " : "hidden"
+            online ? "bg-kiwi-11 opacity-75 animate-ping " : "hidden"
           }`}
         ></span>
         <span
           className={`relative inline-flex size-4 rounded-full ${
-            online ? "bg-kiwi-9" : "bg-taupe-800"
+            online ? "bg-kiwi-11" : "bg-taupe-800"
           }`}
         ></span>
       </span>
@@ -75,7 +75,7 @@ export default function StatusCard() {
         />
         <span className="text-center dark:text-taupe-500 text-taupe-700">
           I&apos;M{" "}
-          <span className="text-kiwi-9 font-bold">
+          <span className="dark:text-kiwi-9 text-kiwi-11 font-bold">
             {online ? "ONLINE" : "OFFLINE"}
           </span>
         </span>

@@ -18,9 +18,9 @@
   --indigo-11: #3451b2;
 
   /* YOUR EXACT CATPPUCCIN KIWI GREEN (LIGHT MODE) */
-  --kiwi-1: #fbfdfb;   /* Very subtle background canvas tint */
-  --kiwi-3: #e5f7e3;   /* Clean card / badge background */
-  --kiwi-6: #c6ecc2;   /* Elegant structural border */
+  --kiwi-1: #e5f7e3;   /* Very subtle background canvas tint */
+  --kiwi-3: #EBFCE9;   /* Clean card / badge background */
+  --kiwi-6: #DBF7D7;   /* Elegant structural border */
   --kiwi-9: #A6E3A1;   /* 👈 YOUR EXACT PICKER GREEN FOR SOLID ELEMENTS */
   --kiwi-11: #4E9A5A;  /* Deep high-contrast readable text */
 }
