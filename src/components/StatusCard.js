@@ -55,7 +55,7 @@ export default function StatusCard() {
   }, []);
 
   return (
-    <fieldset className=" relative border-2 border-taupe-900 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-950/20 bg-taupe-100">
+    <fieldset className=" relative border-2 border-taupe-900 dark:border-taupe-100 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-50/20 bg-taupe-100">
       <span className="absolute flex size-4 -top-5 right-1">
         <span
           className={`absolute inline-flex h-full w-full rounded-full ${
@@ -73,7 +73,7 @@ export default function StatusCard() {
         <div
           className={`absolute  h-5 w-5 rounded-full transition-all duration-300 `}
         />
-        <span className="text-center dark:text-taupe-400 text-taupe-700">
+        <span className="text-center dark:text-taupe-800 text-taupe-700">
           I&apos;M{" "}
           <span className="dark:text-kiwi-9 text-kiwi-11 font-bold">
             {online ? "ONLINE" : "OFFLINE"}

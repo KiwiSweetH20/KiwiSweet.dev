@@ -81,14 +81,14 @@ function ProjectBox({ title, description, link, gitLink, site }) {
   ];
 
   return (
-    <div className=" group relative overflow-hidden dark:border-taupe-900 border-kiwi-9 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl dark:shadow-kiwi-9/10 shadow-taupe-800/40 hover:scale-105 transition-transform duration-300 ease-in-out dark:hover:border-kiwi-9 hover:border-taupe-800 w-full">
+    <div className=" group relative overflow-hidden dark:border-taupe-400 border-kiwi-9 border-2 basis-6xl rounded-2xl m-5 hover:shadow-xl dark:shadow-kiwi-9/10 shadow-taupe-800/40 hover:scale-105 transition-transform duration-300 ease-in-out dark:hover:border-kiwi-9 hover:border-taupe-800 w-full">
       <div className="group-hover:blur-xs p-3 flex flex-col dark:hover:bg-taupe-900/30 hover:bg-kiwi-11/30 transition-colors duration-300">
         <span className="dark:text-kiwi-9 text-taupe-800 pb-2 font-bold text-2xl m-2">
           {title}
         </span>
-        <span className="mb-2 mx-2 dark:text-taupe-400 text-taupe-800">{description}</span>
+        <span className="mb-2 mx-2  text-taupe-800">{description}</span>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center dark:hover:bg-taupe-950/60 hover:bg-kiwi-6/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 ">
+      <div className="absolute inset-0 flex flex-col items-center justify-center dark:hover:bg-taupe-50/60 hover:bg-kiwi-6/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 ">
         <span className="inline-flex items-center dark:text-kiwi-9 text-taupe-800 font-bold text-2xl">
           <a href={gitLink} target="_blank" rel="noopener noreferrer" className="inline-flex dark:hover:text-taupe-500 hover:text-taupe-600 transition-colors duration-300 ">
             {gitIcon}{link}

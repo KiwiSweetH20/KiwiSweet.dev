@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const SPRITE_SIZE = 32;
 const SPRITE_SCALE = 2;
 const CONSTANT_SPEED = 2;
+const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
 
 const animations = {
   sit: { row: 28, frames: 3, speed: 300 },
@@ -22,21 +23,19 @@ const animations = {
 export default function MouseSprite() {
   const [isEnabled, setIsEnabled] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
-  
+
+  const homeRef = useRef(null);
   const spriteRef = useRef(null);
-  const mouse = useRef({ x: 50, y: 50 });
-  const position = useRef({ x: 50, y: 50 });
+  const mouse = useRef({ x: 0, y: 0 });
+  const position = useRef({ x: 0, y: 0 });
   const currentAnimation = useRef("sit");
   const frame = useRef(0);
 
-  // --- UPDATED HYDRATION HOOK (MOBILE CHECK ADDED) ---
   useEffect(() => {
     requestAnimationFrame(() => {
       setHasMounted(true);
-      
-      // Disable automatically if the screen width is less than 768px (mobile)
+
       const isMobile = window.innerWidth < 768;
-      
       if (isMobile) {
         setIsEnabled(false);
       } else {
@@ -52,16 +51,25 @@ export default function MouseSprite() {
     setIsEnabled((prev) => {
       const nextState = !prev;
       localStorage.setItem("catSpriteEnabled", JSON.stringify(nextState));
-      if (nextState) {
-        position.current = { x: 50, y: 50 };
-        mouse.current = { x: 50, y: 50 };
-        currentAnimation.current = "sit";
-      }
       return nextState;
     });
   };
 
-  /* * ========================== * TRACK MOUSE * ========================== */
+  /* ========= PLACE CAT AT HOME (above the button) ========= */
+  useEffect(() => {
+    if (!hasMounted || !isEnabled || !homeRef.current) return;
+
+    const home = homeRef.current.getBoundingClientRect();
+    const centerX = home.left + home.width / 2;
+    const centerY = home.top + home.height / 2;
+
+    position.current = { x: centerX, y: centerY };
+    mouse.current = { x: centerX, y: centerY };
+    currentAnimation.current = "sit";
+    frame.current = 0;
+  }, [isEnabled, hasMounted]);
+
+  /* ========= TRACK MOUSE ========= */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
 
@@ -74,7 +82,7 @@ export default function MouseSprite() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isEnabled, hasMounted]);
 
-  /* * ========================== * MOVE TOWARD MOUSE * ========================== */
+  /* ========= MOVE TOWARD MOUSE ========= */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
 
@@ -103,17 +111,13 @@ export default function MouseSprite() {
           "runLeft",
           "runUpLeft",
           "runUp",
-          "runUpRight"
+          "runUpRight",
         ];
         newAnimation = directions[zone];
       } else {
         position.current.x = mouse.current.x;
         position.current.y = mouse.current.y;
-        if (currentAnimation.current === "sit") {
-          newAnimation = "sit";
-        } else {
-          newAnimation = "stroke";
-        }
+        newAnimation = currentAnimation.current === "sit" ? "sit" : "stroke";
       }
 
       if (newAnimation !== currentAnimation.current) {
@@ -121,19 +125,17 @@ export default function MouseSprite() {
         frame.current = 0;
         const animation = animations[newAnimation];
         if (spriteRef.current) {
-          spriteRef.current.style.backgroundPosition = `
-            0px -${animation.row * SPRITE_SIZE}px
-          `;
+          spriteRef.current.style.backgroundPosition = `0px -${animation.row * SPRITE_SIZE}px`;
         }
       }
 
-      if (spriteRef.current) {
-        const offset = (SPRITE_SIZE * SPRITE_SCALE) / 2;
-        const drawX = position.current.x - offset;
-        const drawY = position.current.y - offset;
-        spriteRef.current.style.transform = `
-          translate3d(${drawX}px, ${drawY}px, 0) scale(${SPRITE_SCALE})
-        `;
+      if (spriteRef.current && homeRef.current) {
+        // Move relative to the home box, not the page corner
+        const home = homeRef.current.getBoundingClientRect();
+        const offset = HOME_SIZE / 2;
+        const moveX = position.current.x - offset - home.left;
+        const moveY = position.current.y - offset - home.top;
+        spriteRef.current.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(${SPRITE_SCALE})`;
       }
 
       animationFrame = requestAnimationFrame(move);
@@ -143,7 +145,7 @@ export default function MouseSprite() {
     return () => cancelAnimationFrame(animationFrame);
   }, [isEnabled, hasMounted]);
 
-  /* * ========================== * ANIMATE FRAMES * ========================== */
+  /* ========= ANIMATE FRAMES ========= */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
 
@@ -151,9 +153,7 @@ export default function MouseSprite() {
       if (!spriteRef.current) return;
       const animation = animations[currentAnimation.current];
       frame.current = (frame.current + 1) % animation.frames;
-      spriteRef.current.style.backgroundPosition = `
-        -${frame.current * SPRITE_SIZE}px -${animation.row * SPRITE_SIZE}px
-      `;
+      spriteRef.current.style.backgroundPosition = `-${frame.current * SPRITE_SIZE}px -${animation.row * SPRITE_SIZE}px`;
     }, 100);
 
     return () => clearInterval(interval);
@@ -164,37 +164,39 @@ export default function MouseSprite() {
   }
 
   return (
-    <>
-      {/* Added 'hidden md:block' to hide the control button completely on mobile devices */}
+    <div className="flex flex-col items-center gap-1">
+      {/* Home box: reserves the cat's space, centered above the button */}
+      <div
+        ref={homeRef}
+        className="flex shrink-0"
+        style={{ width: `${HOME_SIZE}px`, height: `${HOME_SIZE}px` }}
+      >
+        {isEnabled && (
+          <div
+            ref={spriteRef}
+            aria-hidden="true"
+            className="pointer-events-none z-9999 shrink-0"
+            style={{
+              width: `${SPRITE_SIZE}px`,
+              height: `${SPRITE_SIZE}px`,
+              backgroundImage: "url('/actions.png')",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "0px -896px",
+              backgroundSize: "352px 1696px",
+              imageRendering: "pixelated",
+              transformOrigin: "top left",
+              transform: `scale(${SPRITE_SCALE})`,
+            }}
+          />
+        )}
+      </div>
+
       <button
         onClick={handleToggle}
-        className="fixed z-50 hidden rounded bg-taupe-900 px-3 py-1.5 text-xs text-ctp-green shadow-md transition-colors hover:bg-ctp-green hover:text-taupe-900 active:scale-95 md:block"
-        style={{
-          left: "10px",
-          top: "70px",
-        }}
+        className="z-50 rounded bg-taupe-100 px-3 py-1.5 text-xs text-kiwi-9 shadow-md transition-colors hover:bg-kiwi-9 hover:text-taupe-100 active:scale-95"
       >
         {isEnabled ? "Disable Cat" : "Enable Cat"}
       </button>
-
-      {isEnabled && (
-        <div
-          ref={spriteRef}
-          aria-hidden="true"
-          className="pointer-events-none fixed left-0 top-0 z-9999"
-          style={{
-            width: `${SPRITE_SIZE}px`,
-            height: `${SPRITE_SIZE}px`,
-            backgroundImage: "url('/actions.png')",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "0px -896px",
-            backgroundSize: "352px 1696px",
-            imageRendering: "pixelated",
-            transformOrigin: "top left",
-            transform: `translate3d(0, 0, 0) scale(${SPRITE_SCALE})`,
-          }}
-        />
-      )}
-    </>
+    </div>
   );
 }

@@ -1,83 +1,70 @@
 @import "tailwindcss";
 
-/* 1. DEFINE ALL COLOR SCALES (LIGHT MODE BY DEFAULT) */
-:root {
-  /* Slate Grays (Unchanged) */
-  --slate-1: #fcfcfd;
-  --slate-2: #f9f9fb;
-  --slate-3: #f1f3f5;
-  --slate-6: #e6e8eb;
-  --slate-11: #646d7a;
-  --slate-12: #111827;
+/* 🚨 1. THE TAILWIND V4 CLASS-BASED DARK MODE CONFIGURATION DIRECTIVE */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  /* Indigo Accents (Unchanged) */
-  --indigo-1: #fbfbfe;
-  --indigo-3: #edf2fe;
-  --indigo-6: #cbd5fe;
-  --indigo-9: #3e63dd;
-  --indigo-11: #3451b2;
-
-  /* YOUR EXACT CATPPUCCIN KIWI GREEN (LIGHT MODE) */
-  --kiwi-1: #e5f7e3;   /* Very subtle background canvas tint */
-  --kiwi-3: #EBFCE9;   /* Clean card / badge background */
-  --kiwi-6: #DBF7D7;   /* Elegant structural border */
-  --kiwi-9: #A6E3A1;   /* 👈 YOUR EXACT PICKER GREEN FOR SOLID ELEMENTS */
-  --kiwi-11: #4E9A5A;  /* Deep high-contrast readable text */
-}
-
-/* 2. AUTOMATIC SYSTEM DARK MODE SWAPPING */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Slate Grays (Unchanged) */
-    --slate-1: #111113;
-    --slate-2: #18181b;
-    --slate-3: #232326;
-    --slate-6: #34343a;
-    --slate-11: #9ba1a6;
-    --slate-12: #ecedee;
-
-    /* Indigo Accents (Unchanged) */
-    --indigo-1: #0f111a;
-    --indigo-3: #161f40;
-    --indigo-6: #283973;
-    --indigo-9: #3e63dd;
-    --indigo-11: #8da4ef;
-
-    /* YOUR EXACT CATPPUCCIN KIWI GREEN (DARK MODE SHIFT) */
-    --kiwi-1: #0d120d;   /* Midnight slate background tint */
-    --kiwi-3: #152614;   /* Deep badge background */
-    --kiwi-6: #233f21;   /* Dark element outline / border */
-    --kiwi-9: #A6E3A1;   /* 👈 Stays vibrant and pops beautifully on dark screens */
-    --kiwi-11: #d2f4cf;  /* High-contrast soft glowing text */
-  }
-}
-
-/* 3. MAP THE VARIABLES TO TAILWIND CLASS NAMES */
-@theme {
-  --color-slate-1: var(--slate-1);
-  --color-slate-2: var(--slate-2);
-  --color-slate-3: var(--slate-3);
-  --color-slate-6: var(--slate-6);
-  --color-slate-11: var(--slate-11);
-  --color-slate-12: var(--slate-12);
-
-  --color-indigo-1: var(--indigo-1);
-  --color-indigo-3: var(--indigo-3);
-  --color-indigo-6: var(--indigo-6);
-  --color-indigo-9: var(--indigo-9);
-  --color-indigo-11: var(--indigo-11);
-
+/* 🚀 2. REGISTER BOTH CUSTOM PARAMS INTO THE TAILWIND V4 GRAPHICS TREE */
+@theme inline {
+  /* Your Exact Original Catppuccin Kiwi Greens */
   --color-kiwi-1: var(--kiwi-1);
   --color-kiwi-3: var(--kiwi-3);
   --color-kiwi-6: var(--kiwi-6);
   --color-kiwi-9: var(--kiwi-9);
   --color-kiwi-11: var(--kiwi-11);
+
+  /* Your Custom Inverting Taupe Shades */
+  --color-taupe-50: var(--taupe-50);
+  --color-taupe-100: var(--taupe-100);
+  --color-taupe-400: var(--taupe-400);
+  --color-taupe-500: var(--taupe-500);
+  --color-taupe-800: var(--taupe-800);
+  --color-taupe-900: var(--taupe-900);
+  --color-taupe-950: var(--taupe-950);
 }
 
-/* 4. SET GLOBAL APPCANVAS STYLES */
+/* ☀️ 3. LIGHT MODE ASSIGNMENTS */
+:root {
+  /* Kiwi Greens (Light Mode Settings) */
+  --kiwi-1: #e5f7e3;   
+  --kiwi-3: #EBFCE9;   
+  --kiwi-6: #DBF7D7;   
+  --kiwi-9: #A6E3A1;   
+  --kiwi-11: #4E9A5A;  
+
+  /* Taupe Scale (Dark Text, Light Backgrounds) */
+  --taupe-950: oklch(14.7% 0.004 49.3); 
+  --taupe-900: oklch(21.4% 0.009 43.1);
+  --taupe-800: oklch(26.8% 0.011 36.5);
+  --taupe-500: oklch(54.7% 0.021 43.1);
+  --taupe-400: oklch(71.4% 0.014 41.2);
+  --taupe-100: oklch(96% 0.002 17.2);
+  --taupe-50: oklch(98.6% 0.002 67.8);   
+}
+
+/* 🌙 4. DARK MODE VARIABLE VALUE SWAPS */
+.dark {
+  /* Kiwi Greens (Dark Mode Shifts) */
+  --kiwi-1: #0d120d;   
+  --kiwi-3: #152614;   
+  --kiwi-6: #233f21;   
+  --kiwi-9: #A6E3A1;   
+  --kiwi-11: #d2f4cf;  
+
+  /* Taupe Scale (Inverted for Dark Mode) */
+  --taupe-950: oklch(98.6% 0.002 67.8); 
+  --taupe-900: oklch(96% 0.002 17.2);
+  --taupe-800: oklch(71.4% 0.014 41.2);
+  --taupe-500: oklch(54.7% 0.021 43.1);
+  --taupe-400: oklch(26.8% 0.011 36.5);
+  --taupe-100: oklch(21.4% 0.009 43.1);
+  --taupe-50: oklch(14.7% 0.004 49.3);   
+}
+
+/* 🧱 5. GLOBAL BASE ENGINE INTERFACES */
 @layer base {
   body {
-    background-color: var(--color-slate-1);
-    color: var(--color-slate-12);
+    background-color: var(--color-taupe-50); 
+    color: var(--color-taupe-900);
+    transition: background-color 0.2s ease, color 0.2s ease; 
   }
 }
