@@ -193,7 +193,7 @@ export default function MouseSprite() {
 
       <button
         onClick={handleToggle}
-        className="z-50 rounded bg-taupe-100 px-3 py-1.5 text-xs text-kiwi-9 shadow-md transition-colors hover:bg-kiwi-9 hover:text-taupe-100 active:scale-95"
+        className="z-50 rounded bg-taupe-100 px-3 py-1.5 text-xs text-taupe-800 dark:text-kiwi-9 shadow-md transition-colors hover:bg-taupe-800 dark:hover:bg-kiwi-9 hover:text-kiwi-9 dark:hover:text-taupe-100 active:scale-95"
       >
         {isEnabled ? "Disable Cat" : "Enable Cat"}
       </button>
