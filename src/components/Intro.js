@@ -33,7 +33,7 @@ export default function Intro() {
         <div className="">{Pfp}</div>
         <StatusCard />
         {/* <Socials /> */}
-        <PixelSprite/>
+        <PixelSprite bgImage={{ light: "/DayBg.png", dark: "/NightBg.jpg" }} />
       </div>
       <div className="basis-4/5 p-3 flex flex-col">
         <div className="flex flex-row justify-between items-center gap-3">

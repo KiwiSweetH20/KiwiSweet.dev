@@ -20,9 +20,10 @@ const animations = {
   runDownLeft: { row: 8, frames: 6, speed: 100 },
 };
 
-export default function MouseSprite() {
+export default function MouseSprite({ bgImage = "" }) {
   const [isEnabled, setIsEnabled] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const homeRef = useRef(null);
   const spriteRef = useRef(null);
@@ -31,6 +32,7 @@ export default function MouseSprite() {
   const currentAnimation = useRef("sit");
   const frame = useRef(0);
 
+  // Handle initialization and theme changes
   useEffect(() => {
     requestAnimationFrame(() => {
       setHasMounted(true);
@@ -45,6 +47,21 @@ export default function MouseSprite() {
         }
       }
     });
+
+    // Check system/document dark mode status
+    const checkTheme = () => {
+      const isDark = document.documentElement.classList.contains("dark") || 
+                     document.body.classList.contains("dark");
+      setIsDarkMode(isDark);
+    };
+
+    checkTheme();
+
+    // Dynamically watch for theme class modifications on the HTML element
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    
+    return () => observer.disconnect();
   }, []);
 
   const handleToggle = () => {
@@ -163,39 +180,81 @@ export default function MouseSprite() {
     return null;
   }
 
+  // Resolve which background string to utilize depending on structural payload typing
+  let currentBgString = bgImage;
+  if (bgImage && typeof bgImage === "object") {
+    currentBgString = isDarkMode ? bgImage.dark : bgImage.light;
+  }
+
+  const customBackground = currentBgString
+    ? {
+        backgroundImage: `url(${currentBgString})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }
+    : {
+        backgroundImage: "radial-gradient(#d5cdc4 1px, transparent 1px)",
+        backgroundSize: "8px 8px",
+      };
+
   return (
-    <div className="flex flex-col items-center gap-1">
-      {/* Home box: reserves the cat's space, centered above the button */}
-      <div
-        ref={homeRef}
-        className="flex shrink-0"
-        style={{ width: `${HOME_SIZE}px`, height: `${HOME_SIZE}px` }}
+    <div className="flex flex-col items-center gap-4">
+      {/* 1. Cat Home Area with automatic dark/light theme background selection */}
+      <div 
+        className="relative flex shrink-0 items-center justify-center rounded-xl bg-taupe-50/50 dark:bg-zinc-800/50 border border-dashed border-taupe-300 dark:border-zinc-700 shadow-inner overflow-visible"
+        style={{ 
+          width: `${HOME_SIZE + 16}px`, 
+          height: `${HOME_SIZE + 16}px`,
+          ...customBackground
+        }}
       >
-        {isEnabled && (
-          <div
-            ref={spriteRef}
-            aria-hidden="true"
-            className="pointer-events-none z-9999 shrink-0"
-            style={{
-              width: `${SPRITE_SIZE}px`,
-              height: `${SPRITE_SIZE}px`,
-              backgroundImage: "url('/actions.png')",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "0px -896px",
-              backgroundSize: "352px 1696px",
-              imageRendering: "pixelated",
-              transformOrigin: "top left",
-              transform: `scale(${SPRITE_SCALE})`,
-            }}
-          />
+        {/* Target marker or "rug" is hidden when an image string is provided to match transparency intentions */}
+        {!currentBgString && (
+          <div className="absolute w-12 h-6 bg-amber-700/20 dark:bg-amber-500/10 rounded-full blur-[2px] bottom-2 pointer-events-none" />
         )}
+
+        {/* Actual moving Home Box */}
+        <div 
+          ref={homeRef} 
+          className="flex shrink-0" 
+          style={{ width: `${HOME_SIZE}px`, height: `${HOME_SIZE}px` }}
+        >
+          {isEnabled && (
+            <div 
+              ref={spriteRef} 
+              aria-hidden="true" 
+              className="pointer-events-none z-50 shrink-0" 
+              style={{ 
+                width: `${SPRITE_SIZE}px`, 
+                height: `${SPRITE_SIZE}px`,
+                backgroundImage: "url('/actions.png')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "0px -896px",
+                backgroundSize: "352px 1696px",
+                imageRendering: "pixelated",
+                transformOrigin: "top left",
+                transform: `scale(${SPRITE_SCALE})`,
+              }} 
+            />
+          )}
+        </div>
       </div>
 
-      <button
-        onClick={handleToggle}
-        className="z-50 rounded bg-taupe-100 px-3 py-1.5 text-xs text-taupe-800 dark:text-kiwi-9 shadow-md transition-colors hover:bg-taupe-800 dark:hover:bg-kiwi-9 hover:text-kiwi-9 dark:hover:text-taupe-100 active:scale-95"
+      {/* 2. Cat Bowl Button */}
+      <button 
+        onClick={handleToggle} 
+        className="group relative z-50 flex flex-col items-center justify-end pb-1 w-20 h-10 bg-linear-to-b from-red-400 to-red-500 dark:from-kiwi-7 dark:to-kiwi-9 text-[10px] font-bold uppercase tracking-wider text-white shadow-md transition-all hover:brightness-110 active:scale-95"
+        style={{
+          borderRadius: '0 0 100px 100px / 0 0 140px 140px', 
+          clipPath: 'polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%)', 
+        }}
       >
-        {isEnabled ? "Disable Cat" : "Enable Cat"}
+        <div className="absolute top-0 left-[15%] right-[15%] h-3 bg-white/40 rounded-full group-hover:bg-white/60 transition-colors" />
+        <div className={`absolute top-1 left-[16%] right-[16%] h-2 rounded-full transition-colors ${isEnabled ? 'bg-amber-800' : 'bg-zinc-600/30'}`} />
+        <span className="z-10 text-shadow-sm select-none">
+          {isEnabled ? "Full" : "Empty"}
+        </span>
       </button>
     </div>
   );
