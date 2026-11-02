@@ -1,4 +1,3 @@
-// app/providers.tsx
 "use client";
 
 import { ThemeProvider } from "@teispace/next-themes"; // 👈 Sourced from the community fork
