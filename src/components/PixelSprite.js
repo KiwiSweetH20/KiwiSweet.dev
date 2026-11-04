@@ -1,11 +1,21 @@
 "use client";
 
+import Image from "next/image";
+
 import { useEffect, useRef, useState } from "react";
 
 const SPRITE_SIZE = 32;
 const SPRITE_SCALE = 2;
 const CONSTANT_SPEED = 2;
 const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
+
+// ==========================================
+// 🚨 PLACE YOUR BOWL IMAGES HERE
+// ==========================================
+const BOWL_IMAGES = {
+  full: "/FullBowl.png", // Replace with your full bowl image path
+  empty: "/EmptyBowl.png", // Replace with your empty bowl image path
+};
 
 const animations = {
   sit: { row: 28, frames: 3, speed: 300 },
@@ -36,7 +46,6 @@ export default function MouseSprite({ bgImage = "" }) {
   useEffect(() => {
     requestAnimationFrame(() => {
       setHasMounted(true);
-
       const isMobile = window.innerWidth < 768;
       if (isMobile) {
         setIsEnabled(false);
@@ -48,19 +57,21 @@ export default function MouseSprite({ bgImage = "" }) {
       }
     });
 
-    // Check system/document dark mode status
     const checkTheme = () => {
-      const isDark = document.documentElement.classList.contains("dark") || 
-                     document.body.classList.contains("dark");
+      const isDark =
+        document.documentElement.classList.contains("dark") ||
+        document.body.classList.contains("dark");
       setIsDarkMode(isDark);
     };
 
     checkTheme();
 
-    // Dynamically watch for theme class modifications on the HTML element
     const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     return () => observer.disconnect();
   }, []);
 
@@ -75,11 +86,9 @@ export default function MouseSprite({ bgImage = "" }) {
   /* ========= PLACE CAT AT HOME (above the button) ========= */
   useEffect(() => {
     if (!hasMounted || !isEnabled || !homeRef.current) return;
-
     const home = homeRef.current.getBoundingClientRect();
     const centerX = home.left + home.width / 2;
     const centerY = home.top + home.height / 2;
-
     position.current = { x: centerX, y: centerY };
     mouse.current = { x: centerX, y: centerY };
     currentAnimation.current = "sit";
@@ -89,12 +98,10 @@ export default function MouseSprite({ bgImage = "" }) {
   /* ========= TRACK MOUSE ========= */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
-
     const handleMouseMove = (event) => {
       mouse.current.x = event.clientX;
       mouse.current.y = event.clientY;
     };
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isEnabled, hasMounted]);
@@ -108,7 +115,6 @@ export default function MouseSprite({ bgImage = "" }) {
       const dx = mouse.current.x - position.current.x;
       const dy = mouse.current.y - position.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-
       let newAnimation;
 
       if (distance > CONSTANT_SPEED) {
@@ -147,7 +153,6 @@ export default function MouseSprite({ bgImage = "" }) {
       }
 
       if (spriteRef.current && homeRef.current) {
-        // Move relative to the home box, not the page corner
         const home = homeRef.current.getBoundingClientRect();
         const offset = HOME_SIZE / 2;
         const moveX = position.current.x - offset - home.left;
@@ -165,14 +170,12 @@ export default function MouseSprite({ bgImage = "" }) {
   /* ========= ANIMATE FRAMES ========= */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
-
     const interval = setInterval(() => {
       if (!spriteRef.current) return;
       const animation = animations[currentAnimation.current];
       frame.current = (frame.current + 1) % animation.frames;
       spriteRef.current.style.backgroundPosition = `-${frame.current * SPRITE_SIZE}px -${animation.row * SPRITE_SIZE}px`;
     }, 100);
-
     return () => clearInterval(interval);
   }, [isEnabled, hasMounted]);
 
@@ -180,7 +183,6 @@ export default function MouseSprite({ bgImage = "" }) {
     return null;
   }
 
-  // Resolve which background string to utilize depending on structural payload typing
   let currentBgString = bgImage;
   if (bgImage && typeof bgImage === "object") {
     currentBgString = isDarkMode ? bgImage.dark : bgImage.light;
@@ -200,33 +202,31 @@ export default function MouseSprite({ bgImage = "" }) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {/* 1. Cat Home Area with automatic dark/light theme background selection */}
-      <div 
+      {/* 1. Cat Home Area */}
+      <div
         className="relative flex shrink-0 items-center justify-center rounded-xl bg-taupe-50/50 dark:bg-zinc-800/50 border border-dashed border-taupe-300 dark:border-zinc-700 shadow-inner overflow-visible"
-        style={{ 
-          width: `${HOME_SIZE + 16}px`, 
+        style={{
+          width: `${HOME_SIZE + 16}px`,
           height: `${HOME_SIZE + 16}px`,
-          ...customBackground
+          ...customBackground,
         }}
       >
-        {/* Target marker or "rug" is hidden when an image string is provided to match transparency intentions */}
         {!currentBgString && (
           <div className="absolute w-12 h-6 bg-amber-700/20 dark:bg-amber-500/10 rounded-full blur-[2px] bottom-2 pointer-events-none" />
         )}
 
-        {/* Actual moving Home Box */}
-        <div 
-          ref={homeRef} 
-          className="flex shrink-0" 
+        <div
+          ref={homeRef}
+          className="flex shrink-0"
           style={{ width: `${HOME_SIZE}px`, height: `${HOME_SIZE}px` }}
         >
           {isEnabled && (
-            <div 
-              ref={spriteRef} 
-              aria-hidden="true" 
-              className="pointer-events-none z-50 shrink-0" 
-              style={{ 
-                width: `${SPRITE_SIZE}px`, 
+            <div
+              ref={spriteRef}
+              aria-hidden="true"
+              className="pointer-events-none z-50 shrink-0"
+              style={{
+                width: `${SPRITE_SIZE}px`,
                 height: `${SPRITE_SIZE}px`,
                 backgroundImage: "url('/actions.png')",
                 backgroundRepeat: "no-repeat",
@@ -235,26 +235,25 @@ export default function MouseSprite({ bgImage = "" }) {
                 imageRendering: "pixelated",
                 transformOrigin: "top left",
                 transform: `scale(${SPRITE_SCALE})`,
-              }} 
+              }}
             />
           )}
         </div>
       </div>
 
-      {/* 2. Cat Bowl Button */}
-      <button 
-        onClick={handleToggle} 
-        className="group relative z-50 flex flex-col items-center justify-end pb-1 w-20 h-10 bg-linear-to-b from-red-400 to-red-500 dark:from-kiwi-7 dark:to-kiwi-9 text-[10px] font-bold uppercase tracking-wider text-white shadow-md transition-all hover:brightness-110 active:scale-95"
-        style={{
-          borderRadius: '0 0 100px 100px / 0 0 140px 140px', 
-          clipPath: 'polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%)', 
-        }}
+      {/* 2. Graphical Cat Bowl Button */}
+      <button
+        onClick={handleToggle}
+        className="group relative z-10 flex items-center justify-center w-16 h-12 transition-transform active:scale-95 focus:outline-hidden"
+        aria-label={isEnabled ? "Empty the cat bowl" : "Fill the cat bowl"}
       >
-        <div className="absolute top-0 left-[15%] right-[15%] h-3 bg-white/40 rounded-full group-hover:bg-white/60 transition-colors" />
-        <div className={`absolute top-1 left-[16%] right-[16%] h-2 rounded-full transition-colors ${isEnabled ? 'bg-amber-800' : 'bg-zinc-600/30'}`} />
-        <span className="z-10 text-shadow-sm select-none">
-          {isEnabled ? "Full" : "Empty"}
-        </span>
+        <Image
+          src={isEnabled ? BOWL_IMAGES.full : BOWL_IMAGES.empty}
+          alt={isEnabled ? "Full Bowl" : "Empty Bowl"}
+          width="100"
+          height="80"
+          className="w-full h-full object-contain filter drop-shadow-md group-hover:brightness-105 transition-all"
+        />
       </button>
     </div>
   );
