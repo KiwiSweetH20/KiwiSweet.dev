@@ -9,12 +9,11 @@ const SPRITE_SCALE = 2;
 const CONSTANT_SPEED = 2;
 const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
 
-// ==========================================
-// 🚨 PLACE YOUR BOWL IMAGES HERE
-// ==========================================
+//  PLACE YOUR BOWL IMAGES HERE
+
 const BOWL_IMAGES = {
-  full: "/FullBowl.png", // Replace with your full bowl image path
-  empty: "/EmptyBowl.png", // Replace with your empty bowl image path
+  full: "/FullBowl.png", 
+  empty: "/EmptyBowl.png", 
 };
 
 const animations = {
@@ -83,7 +82,7 @@ export default function MouseSprite({ bgImage = "" }) {
     });
   };
 
-  /* ========= PLACE CAT AT HOME (above the button) ========= */
+  /* PLACE CAT AT HOME (above the button) */
   useEffect(() => {
     if (!hasMounted || !isEnabled || !homeRef.current) return;
     const home = homeRef.current.getBoundingClientRect();
@@ -95,7 +94,7 @@ export default function MouseSprite({ bgImage = "" }) {
     frame.current = 0;
   }, [isEnabled, hasMounted]);
 
-  /* ========= TRACK MOUSE ========= */
+  /* TRACK MOUSE */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
     const handleMouseMove = (event) => {
@@ -106,7 +105,7 @@ export default function MouseSprite({ bgImage = "" }) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isEnabled, hasMounted]);
 
-  /* ========= MOVE TOWARD MOUSE ========= */
+  /* MOVE TOWARD MOUSE */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
 
@@ -167,7 +166,7 @@ export default function MouseSprite({ bgImage = "" }) {
     return () => cancelAnimationFrame(animationFrame);
   }, [isEnabled, hasMounted]);
 
-  /* ========= ANIMATE FRAMES ========= */
+  /* ANIMATE FRAMES */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
     const interval = setInterval(() => {

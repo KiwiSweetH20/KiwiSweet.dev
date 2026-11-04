@@ -20,7 +20,7 @@ const comicRelief = Comic_Relief({
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 6,
 };
 
 export const metadata = {
