@@ -73,7 +73,7 @@ export default function Page() {
                   LinkedIn
                 </span>
               </a>
-              <a
+              {/* <a
                 href="https://github.com/KiwiSweetH20"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -93,8 +93,8 @@ export default function Page() {
                 <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-400/40 bg-kiwi-6/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-kiwi-11 border-2">
                   X
                 </span>
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 href="..."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -111,7 +111,7 @@ export default function Page() {
                 <span className="absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-0 rounded-md dark:bg-taupe-400/40 bg-kiwi-6/40 backdrop-blur-sm px-3 py-1.5 text-sm dark:text-kiwi-9 text-taupe-800 font-medium opacity-0 transition-all duration-200 ease-in-out group-hover:scale-100 group-hover:opacity-100 whitespace-nowrap dark:border-kiwi-9 border-kiwi-11 border-2">
                   BlueSky
                 </span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
