@@ -33,7 +33,7 @@ export default function Projects() {
     <div className="p-20 flex flex-col w-full h-fit justify-center">
       <div className="inline-flex rounded-2xl mx-auto items-center md:items-left lg:items-left">
         <Image
-          src="/Kiwi.svg"
+          src="/images/Kiwi.svg"
           alt="Me"
           width="12"
           height="12"

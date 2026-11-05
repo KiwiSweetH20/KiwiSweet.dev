@@ -12,8 +12,8 @@ const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
 //  PLACE YOUR BOWL IMAGES HERE
 
 const BOWL_IMAGES = {
-  full: "/FullBowl.png", 
-  empty: "/EmptyBowl.png", 
+  full: "/images/FullBowl.png", 
+  empty: "/images/EmptyBowl.png", 
 };
 
 const animations = {
@@ -234,7 +234,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
               style={{
                 width: `${SPRITE_SIZE}px`,
                 height: `${SPRITE_SIZE}px`,
-                backgroundImage: "url('/actions.png')",
+                backgroundImage: "url('/images/actions.png')",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "0px -896px",
                 backgroundSize: "352px 1696px",

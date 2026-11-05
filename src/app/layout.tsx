@@ -1,6 +1,7 @@
 import React from "react";
 import "./global.css";
-import {Providers} from "./Providers";
+import {Providers} from "./lib/Providers";
+import { Metadata } from "next";
 
 import Navbar from "../components/Navbar";
 import ThemeToggle from "../components/ThemeToggle";
@@ -23,9 +24,12 @@ export const viewport = {
   maximumScale: 6,
 };
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "KiwiSweet.dev",
   description: "Front-end developer portfolio",
+  icons: {
+    icon:"/images/Kiwi.svg",
+  } 
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

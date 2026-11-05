@@ -7,7 +7,7 @@ import PixelSprite from "./PixelSprite";
 export default function Intro() {
   const Pfp = [
     <Image
-      src="/KiwiSweet.jpg"
+      src="/images/KiwiSweet.jpg"
       alt="Me"
       key="crypto.randomUUID()"
       width="80"
@@ -17,7 +17,7 @@ export default function Intro() {
   ];
   const kiwiIcon = [
     <Image
-      src="/Kiwi.svg"
+      src="/images/Kiwi.svg"
       alt="Me"
       key="crypto.randomUUID()"
       width="12"
@@ -32,7 +32,7 @@ export default function Intro() {
         <div className="">{Pfp}</div>
         <StatusCard />
         {/* <Socials /> */}
-        <PixelSprite bgImage={{ light: "/DayBg.png", dark: "/NightBg.jpg" }} />
+        <PixelSprite bgImage={{ light: "/images/DayBg.png", dark: "/images/NightBg.jpg" }} />
       </div>
       <div className="basis-4/5 p-3 flex flex-col">
         <div className="flex flex-row justify-between items-center gap-3">
