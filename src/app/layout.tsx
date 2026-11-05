@@ -25,28 +25,35 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kiwi-sweet-dev.vercel.app'),
-  title: "KiwiSweet.dev",
-  description: "Front-end developer portfolio",
-  icons: {
-    icon:"/images/Kiwi.svg",
-  },
-
+  title: 'KiwiSweet.dev',
+  description: 'Front-end developer portfolio',
+  
+  // Open Graph configuration (for LinkedIn, Facebook, Slack, etc.)
   openGraph: {
-    title: "KiwiSweet.dev",
-    description: "Front-end developer portfolio",
-    url: 'https://kiwi-sweet-dev.vercel.app/',
+    title: 'KiwiSweet.dev',
+    description: 'Front-end developer portfolio',
+    url: 'https://kiwi-sweet-dev.vercel.app',
     siteName: 'KiwiSweet.dev',
     type: 'website',
     images: [
       {
-        url: 'https://kiwi-sweet-dev.vercel.app/public/images/sitePreview.png', 
-        width: 1200,                    
+        url: 'https://vercel.app', 
+        width: 1200,                   
         height: 630,                    
         alt: 'KiwiSweet.dev dashboard preview',
       },
     ],
-  },}
+  },
+
+  // Twitter / X specific configuration
+  twitter: {
+    card: 'summary_large_image', // Tells the platform to use the large image layout style
+    title: 'KiwiSweet.dev',
+    description: 'Front-end developer portfolio',
+    images: ['https://vercel.app'],
+  },
+};
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
