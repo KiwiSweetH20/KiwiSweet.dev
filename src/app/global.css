@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
-/* 🚨 1. THE TAILWIND V4 CLASS-BASED DARK MODE CONFIGURATION DIRECTIVE */
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* 🚀 2. REGISTER BOTH CUSTOM PARAMS INTO THE TAILWIND V4 GRAPHICS TREE */
+
 @theme inline {
-  /* Your Exact Original Catppuccin Kiwi Greens */
   --color-kiwi-1: var(--kiwi-1);
   --color-kiwi-3: var(--kiwi-3);
   --color-kiwi-6: var(--kiwi-6);
@@ -22,16 +21,14 @@
   --color-taupe-950: var(--taupe-950);
 }
 
-/* ☀️ 3. LIGHT MODE ASSIGNMENTS */
+
 :root {
-  /* Kiwi Greens (Light Mode Settings) */
   --kiwi-1: #e5f7e3;   
   --kiwi-3: #EBFCE9;   
   --kiwi-6: #DBF7D7;   
   --kiwi-9: #A6E3A1;   
   --kiwi-11: #4E9A5A;  
 
-  /* Taupe Scale (Dark Text, Light Backgrounds) */
   --taupe-950: oklch(14.7% 0.004 49.3); 
   --taupe-900: oklch(21.4% 0.009 43.1);
   --taupe-800: oklch(26.8% 0.011 36.5);
@@ -41,16 +38,14 @@
   --taupe-50: oklch(98.6% 0.002 67.8);   
 }
 
-/* 🌙 4. DARK MODE VARIABLE VALUE SWAPS */
+
 .dark {
-  /* Kiwi Greens (Dark Mode Shifts) */
   --kiwi-1: #0d120d;   
   --kiwi-3: #152614;   
   --kiwi-6: #233f21;   
   --kiwi-9: #A6E3A1;   
   --kiwi-11: #d2f4cf;  
 
-  /* Taupe Scale (Inverted for Dark Mode) */
   --taupe-950: oklch(98.6% 0.002 67.8); 
   --taupe-900: oklch(96% 0.002 17.2);
   --taupe-800: oklch(71.4% 0.014 41.2);
@@ -60,7 +55,6 @@
   --taupe-50: oklch(14.7% 0.004 49.3);   
 }
 
-/* 🧱 5. GLOBAL BASE ENGINE INTERFACES */
 @layer base {
   body {
     background-color: var(--color-taupe-50); 
