@@ -29,8 +29,23 @@ export const metadata: Metadata = {
   description: "Front-end developer portfolio",
   icons: {
     icon:"/images/Kiwi.svg",
-  } 
-};
+  },
+
+  openGraph: {
+    title: "KiwiSweet.dev",
+    description: "Front-end developer portfolio",
+    url: 'https://kiwi-sweet-dev.vercel.app/',
+    siteName: 'KiwiSweet.dev',
+    type: 'website',
+    images: [
+      {
+        url: '/images/sitePreview.png', 
+        width: 1200,                    
+        height: 630,                    
+        alt: 'KiwiSweet.dev dashboard preview',
+      },
+    ],
+  },}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
