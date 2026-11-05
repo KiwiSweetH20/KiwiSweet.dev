@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'public/images/sitePreview.png', 
+        url: 'https://kiwi-sweet-dev.vercel.app/images/sitePreview.png', 
         width: 1200,                    
         height: 630,                    
         alt: 'KiwiSweet.dev dashboard preview',
