@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function IntroTools() {
   const kiwiIcon = [
     <Image
-      src="/Kiwi.svg"
+      src="/images/Kiwi.svg"
       alt="Me"
       key="crypto.randomUUID()"
       width="12"
