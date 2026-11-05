@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/sitePreview.png', 
+        url: 'public/images/sitePreview.png', 
         width: 1200,                    
         height: 630,                    
         alt: 'KiwiSweet.dev dashboard preview',
