@@ -29,17 +29,24 @@ const animations = {
   runDownLeft: { row: 8, frames: 6, speed: 100 },
 };
 
-export default function MouseSprite({ bgImage = "" }) {
+  interface MouseSpriteProps {
+  bgImage?: string | {
+    light: string;
+    dark: string;
+  };
+}
+
+export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
   const [isEnabled, setIsEnabled] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const homeRef = useRef(null);
-  const spriteRef = useRef(null);
-  const mouse = useRef({ x: 0, y: 0 });
-  const position = useRef({ x: 0, y: 0 });
-  const currentAnimation = useRef("sit");
-  const frame = useRef(0);
+  const homeRef = useRef<HTMLDivElement>(null);
+  const spriteRef = useRef<HTMLDivElement>(null);
+  const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const position = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const currentAnimation = useRef<keyof typeof animations>("sit");
+  const frame = useRef<number>(0);
 
   // Handle initialization and theme changes
   useEffect(() => {
@@ -97,7 +104,7 @@ export default function MouseSprite({ bgImage = "" }) {
   /* TRACK MOUSE */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       mouse.current.x = event.clientX;
       mouse.current.y = event.clientY;
     };
@@ -109,12 +116,12 @@ export default function MouseSprite({ bgImage = "" }) {
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
 
-    let animationFrame;
+    let animationFrame: number;
     const move = () => {
       const dx = mouse.current.x - position.current.x;
       const dy = mouse.current.y - position.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      let newAnimation;
+      let newAnimation: keyof typeof animations;
 
       if (distance > CONSTANT_SPEED) {
         position.current.x += (dx / distance) * CONSTANT_SPEED;
@@ -134,7 +141,7 @@ export default function MouseSprite({ bgImage = "" }) {
           "runUpLeft",
           "runUp",
           "runUpRight",
-        ];
+        ] as const;
         newAnimation = directions[zone];
       } else {
         position.current.x = mouse.current.x;

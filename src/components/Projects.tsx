@@ -59,7 +59,7 @@ export default function Projects() {
   );
 }
 
-function ProjectBox({ title, description, link, gitLink, site }) {
+function ProjectBox({ title, description, link, gitLink, site }: {title: string; description: string; link: string; gitLink: string; site: string}) {
   const gitIcon = [
     <svg
       width="24"

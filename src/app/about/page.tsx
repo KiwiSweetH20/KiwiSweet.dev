@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { GitHub, Linkedin } from "react-feather";
 
-import IntroTools from "../../components/IntroTools.js";
+import IntroTools from "../../components/IntroTools";
 
 export default function Page() {
   return (

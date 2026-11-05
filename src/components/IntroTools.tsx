@@ -195,7 +195,7 @@ export default function IntroTools() {
   );
 }
 
-function ToolItems({ tool, icon }) {
+function ToolItems({ tool, icon }: { tool: string; icon: React.ReactNode }) {
   return (
     <div className="mt-1 border-2 border-taupe-800 dark:bg-taupe-400/30 bg-kiwi-3 rounded-4xl p-3 inline-flex items-center w-fit text-taupe-800">
       {icon}{" "}{tool}

@@ -28,11 +28,11 @@ export const metadata = {
   description: "Front-end developer portfolio",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`bg-slate-1 text-slate-12 ${comicRelief.variable} antialiased min-h-screen`}>
+        className={`bg-slate-1 text-slate-12 ${comicRelief.variable} antialiased min-h-screen`} suppressHydrationWarning>
         <Providers>
           <Navbar />
           <ThemeToggle/>

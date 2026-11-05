@@ -51,7 +51,7 @@ export default function Socials() {
   );
 }
 
-function SocialIcons({ icon, link, tooltip }) {
+function SocialIcons({ icon, link, tooltip }: {icon: React.ReactNode; link: string; tooltip: string}) {
   return (
     <a
       href={link}

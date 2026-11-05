@@ -12,7 +12,7 @@ export default function Navbar() {
           alt="Me"
           width="10"
           height="10"
-          className="w-10 h-10 rounded-full object-cover overflow-hidden hover:animate-spin "
+          className="w-10 h-10 rounded-full object-cover overflow-hidden hover:animate-spin"
         />
       </div>
       <div className="h-6 w-px bg-white/20"></div>

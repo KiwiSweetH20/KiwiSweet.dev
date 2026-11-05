@@ -6,12 +6,12 @@ import { format } from "date-fns/format";
 import { Clock, GitHub, Linkedin } from "react-feather";
 
 export default function Footer() {
-  const [time, setTime] = React.useState();
+  const [time, setTime] = React.useState(new Date());
 
   React.useEffect(() => {
     const intervalId = window.setInterval(() => {
       setTime(new Date());
-    }, [50]);
+    }, 50);
 
     return () => {
       window.clearInterval(intervalId);

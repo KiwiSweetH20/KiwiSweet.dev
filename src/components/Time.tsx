@@ -4,12 +4,12 @@ import React from "react";
 import { format } from "date-fns/format";
 
 export default function Time() {
-  const [time, setTime] = React.useState();
+  const [time, setTime] = React.useState(new Date());
 
   React.useEffect(() => {
     const intervalId = window.setInterval(() => {
       setTime(new Date());
-    }, [50]);
+    }, 50);
 
     return () => {
       window.clearInterval(intervalId);

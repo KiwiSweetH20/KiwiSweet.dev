@@ -1,8 +1,7 @@
 import Image from "next/image";
 
-import Time from "./Time.js";
-// import Socials from "./Socials.js";
-import StatusCard from "./StatusCard.js";
+import Time from "./Time";
+import StatusCard from "./StatusCard";
 import PixelSprite from "./PixelSprite";
 
 export default function Intro() {
