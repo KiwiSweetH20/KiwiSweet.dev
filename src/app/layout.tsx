@@ -25,6 +25,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kiwi-sweet-dev.vercel.app'),
   title: "KiwiSweet.dev",
   description: "Front-end developer portfolio",
   icons: {
