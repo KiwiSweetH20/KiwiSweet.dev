@@ -36,13 +36,14 @@ export default function AdminDashboard() {
       .update({ is_online: newStatus })
       .eq("id", 1);
 
-    if (!error) {
-      setOnline(newStatus);
+        if (error) {
+      console.error("Error updating status:", error.message, error.details, error.hint);
     } else {
-      console.error("Error updating status:", error);
+      setOnline(newStatus);
     }
     setLoading(false);
   };
+  
 
   return (
     <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-500 bg-taupe-100 rounded-2xl border my-10">
