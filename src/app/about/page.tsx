@@ -13,18 +13,18 @@ export default function Page() {
             About Me
           </p>
         </div>
-        <div className="flex flex-row justify-center w-full p-5 gap-5">
-          <div className="basis-1/3 items-baseline">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-center w-full p-5 gap-5">
+          <div className="basis-1/3 justify-center md:items-center lg:items-baseline">
             <Image
               src="/Gen.jpeg"
-              alt="Me"
+              alt="KiwiSweet"
               key="crypto.randomUUID()"
               width="280"
               height="300"
               className=" h-auto w-auto rounded-md"
             />
           </div>
-          <div className="flex flex-col gap-5 justify-around items-baseline basis-2/3 ">
+          <div className="flex flex-col gap-5 justify-around items-baseline md:justify-center lg:justify-baseline basis-2/3 ">
             <div className="flex-col text-lg text-justify px-3 text-taupe-800">
               <p className="pb-6">
                 I&apos;m a creative and driven individual with a passion for

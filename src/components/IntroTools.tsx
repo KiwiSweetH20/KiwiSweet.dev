@@ -166,7 +166,7 @@ export default function IntroTools() {
     },
   ];
   return (
-    <div className="flex flex-col items-start justify-baseline">
+    <div className="flex flex-col items-start justify-baseline p-5">
       <div className="inline-flex items-center my-2">
         {kiwiIcon}
         <span className=" inline-flex dark:text-kiwi-9 text-taupe-800 text-3xl font-bold">Tools</span>
