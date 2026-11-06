@@ -5,28 +5,38 @@ import { supabase } from "../app/lib/supabase";
 export default function StatusCard() {
   const [online, setOnline] = useState(false);
 
-useEffect(() => {
-  if (!supabase) return;
+  useEffect(() => {
+    if (!supabase) return;
 
-  const channel = supabase.channel("my-presence");
+    // 1. Fetch initial status from database
+    const fetchStatus = async () => {
+      const { data } = await supabase
+        .from("user_status")
+        .select("is_online")
+        .eq("id", 1)
+        .single();
+      if (data) setOnline(data.is_online);
+    };
 
-  const updatestatus = () => {
-    const state = channel.presenceState();
-    const isOnline = state["genevieve"] !== undefined;
-    setOnline(isOnline);
-  };
+    fetchStatus();
 
-  channel
-    .on("presence", { event: "sync" }, updatestatus)
-    .on("presence", { event: "join" }, updatestatus)
-    .on("presence", { event: "leave" }, updatestatus)
-    .subscribe();
+    // 2. Subscribe to realtime row updates
+    const channel = supabase
+      .channel("status-updates")
+            .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "user_status", filter: "id=eq.1" },
+        (payload: { new: { is_online: boolean } }) => {
+          setOnline(payload.new.is_online);
+        }
+      )
 
-  return () => {
-    supabase.removeChannel(channel);
-  };
-}, []);
+      .subscribe();
 
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   return (
     <fieldset className="relative border-2 border-taupe-900 dark:border-taupe-100 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-50/20 bg-taupe-100">
