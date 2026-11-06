@@ -1,21 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { supabase } from "../lib/supabase"; // Verified matching relative path from image
+import { supabase } from "../lib/supabase";
 
-export default function AdminDashboard() {
+// 1. Put your actual logic here inside a sub-component
+function AdminContent() {
   const [online, setOnline] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const searchParams = useSearchParams();
   const userSecret = searchParams.get("secret");
 
-  // Calculate authorization immediately during render logic to bypass linting errors
-  const systemSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET_PASSPHRASE || "genevieve_secret_status_99";
+  // Calculate authorization immediately during render logic
+  const systemSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET_PASSPHRASE || "Jesus@2007##";
   const isAuthorized = userSecret === systemSecret;
 
-    useEffect(() => {
-    // 1. If not authorized, stop immediately without changing any state inside the effect body
+  useEffect(() => {
     if (!isAuthorized || !supabase) {
       return;
     }
@@ -32,7 +32,6 @@ export default function AdminDashboard() {
       } catch (error) {
         console.error("Error fetching status:", error);
       } finally {
-        // 2. Safely toggle loading off here inside the async execution frame
         setLoading(false);
       }
     };
@@ -40,8 +39,6 @@ export default function AdminDashboard() {
     getCurrentStatus();
   }, [isAuthorized]);
 
-
-  // If someone just types "/admin" without the secret parameter, block them instantly
   if (!isAuthorized) {
     return (
       <div className="p-8 text-center text-red-500 font-bold max-w-md mx-auto my-20 border-2 border-red-500 bg-red-100/10 rounded-2xl">
@@ -84,5 +81,14 @@ export default function AdminDashboard() {
         </button>
       </div>
     </div>
+  );
+}
+
+// 2. Export a main layout wrapper that uses Suspense to bypass the Vercel build error
+export default function AdminDashboard() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center">Loading interface configuration...</div>}>
+      <AdminContent />
+    </Suspense>
   );
 }
