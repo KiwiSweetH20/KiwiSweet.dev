@@ -45,7 +45,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-900 bg-taupe-100 rounded-2xl border my-10">
+    <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-500 bg-taupe-100 rounded-2xl border my-10">
       <h1 className="text-2xl font-bold mb-4 dark:text-taupe-100 text-taupe-800">
         Status Control Center
       </h1>
