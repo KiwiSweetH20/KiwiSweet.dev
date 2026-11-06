@@ -6,26 +6,29 @@ export default function AdminTracker() {
   const [status, setStatus] = useState("Connecting...");
 
   useEffect(() => {
-    const trackerChannel = supabase.channel("my-presence", {
-      config: { presence: { key: "genevieve" } },
-    });
+  if (!supabase) return;
 
-    trackerChannel.subscribe(async (status) => {
-      if (status === "SUBSCRIBED") {
-        setStatus("🟢 Broadcasting: ONLINE");
-        await trackerChannel.track({
-          user: "genevieve",
-          online_at: new Date().toISOString(),
-        });
-      } else {
-        setStatus(`🔴 Channel status: ${status}`);
-      }
-    });
+  const trackerChannel = supabase.channel("my-presence", {
+    config: { presence: { key: "genevieve" } },
+  });
 
-    return () => {
-      supabase.removeChannel(trackerChannel);
-    };
-  }, []);
+  trackerChannel.subscribe(async (status: string) => {
+    if (status === "SUBSCRIBED") {
+      setStatus("🟢 Broadcasting: ONLINE");
+      await trackerChannel.track({
+        user: "genevieve",
+        online_at: new Date().toISOString(),
+      });
+    } else {
+      setStatus(`🔴 Channel status: ${status}`);
+    }
+  });
+
+  return () => {
+    supabase.removeChannel(trackerChannel);
+  };
+}, []);
+
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>

@@ -5,26 +5,28 @@ import { supabase } from "../app/lib/supabase";
 export default function StatusCard() {
   const [online, setOnline] = useState(false);
 
-  useEffect(() => {
-    const channel = supabase.channel("my-presence");
+useEffect(() => {
+  if (!supabase) return;
 
-    const updateStatus = () => {
-      const state = channel.presenceState();
-      // Check if your tracking client has actively registered the "genevieve" key
-      const isOnline = state["genevieve"] !== undefined;
-      setOnline(isOnline);
-    };
+  const channel = supabase.channel("my-presence");
 
-    channel
-      .on("presence", { event: "sync" }, updateStatus)
-      .on("presence", { event: "join" }, updateStatus)
-      .on("presence", { event: "leave" }, updateStatus)
-      .subscribe();
+  const updatestatus = () => {
+    const state = channel.presenceState();
+    const isOnline = state["genevieve"] !== undefined;
+    setOnline(isOnline);
+  };
 
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  } , []);
+  channel
+    .on("presence", { event: "sync" }, updatestatus)
+    .on("presence", { event: "join" }, updatestatus)
+    .on("presence", { event: "leave" }, updatestatus)
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(channel);
+  };
+}, []);
+
 
   return (
     <fieldset className="relative border-2 border-taupe-900 dark:border-taupe-100 w-fit h-fit rounded-2xl p-2 my-2 dark:bg-taupe-50/20 bg-taupe-100">
