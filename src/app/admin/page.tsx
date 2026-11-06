@@ -12,7 +12,7 @@ function AdminContent() {
   const userSecret = searchParams.get("secret");
 
   // Calculate authorization immediately during render logic
-  const systemSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET_PASSPHRASE || "Jesus@2007##";
+  const systemSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET_PASSPHRASE || "KiwiSweetH20Admin";
   const isAuthorized = userSecret === systemSecret;
 
   useEffect(() => {
