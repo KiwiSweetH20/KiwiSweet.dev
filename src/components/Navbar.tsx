@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-6 z-50 left-1/2 -translate-x-1/2 flex items-center gap-4 dark:border-2 border-3 border-kiwi-9 rounded-3xl dark:bg-taupe-100/30 bg-kiwi-3/30 px-6 py-3 backdrop-blur-md whitespace-nowrap w-max-content max-w-calc(100vw-2rem)">
+    <nav className="fixed top-10 z-50 left-1/2 -translate-x-1/2 flex items-center gap-4 dark:border-2 border-3 border-kiwi-9 rounded-3xl dark:bg-taupe-100/30 bg-kiwi-3/30 px-6 py-3 backdrop-blur-md whitespace-nowrap w-max-content max-w-calc(100vw-2rem)">
       <div className="">
         <Image
           src="/images/Kiwi.svg"
