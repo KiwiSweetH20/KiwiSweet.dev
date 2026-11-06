@@ -3,13 +3,11 @@
 import { useTheme } from "@teispace/next-themes";
 import { useSyncExternalStore } from "react";
 
-// Simple empty function for the server rendering step
 const subscribe = () => () => {};
 
 export default function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
 
-  // useSyncExternalStore returns false on the server, and true on the client once mounted
   const isMounted = useSyncExternalStore(
     subscribe,
     () => true,
@@ -17,7 +15,7 @@ export default function ThemeToggle() {
   );
 
   if (!isMounted) {
-    return <div className="w-9 h-9" />; // Blank placeholder during server render
+    return <div className="w-9 h-9" />; 
   }
 
   const isDark = resolvedTheme === "dark";
