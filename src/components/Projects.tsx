@@ -30,11 +30,11 @@ export default function Projects() {
     },
   ];
   return (
-    <div className="p-20 flex flex-col w-full h-fit justify-center">
+    <div className="pt-5 md:pt-20 lg:pt-20 p-20 flex flex-col w-full h-fit justify-center">
       <div className="inline-flex rounded-2xl mx-auto items-center md:items-left lg:items-left">
         <Image
           src="/images/Kiwi.svg"
-          alt="Me"
+          alt="kiwi"
           width="12"
           height="12"
           className="w-12 h-12 rounded-full object-cover "

@@ -6,8 +6,7 @@ import IntroTools from "../../components/IntroTools";
 export default function Page() {
   return (
     <div>
-      {/* <MainBackground className="-z-10" /> */}
-      <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-32 font-(family-name:--font-comic-relief)">
+      <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-15 lg:py-32 md:py-32 font-(family-name:--font-comic-relief)">
         <div className="flex justify-baseline w-full px-5">
           <p className=" text-4xl dark:text-kiwi-9 text-kiwi-11 font-bold">
             About Me
