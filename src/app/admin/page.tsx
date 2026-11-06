@@ -1,72 +1,84 @@
 "use client";
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabase";
+import { useSearchParams } from "next/navigation";
+import { supabase } from "../lib/supabase"; // Verified matching relative path from image
 
 export default function AdminDashboard() {
   const [online, setOnline] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!supabase) return;
+  const searchParams = useSearchParams();
+  const userSecret = searchParams.get("secret");
 
-    // Fetch the current state from the database on load
+  // Calculate authorization immediately during render logic to bypass linting errors
+  const systemSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET_PASSPHRASE || "genevieve_secret_status_99";
+  const isAuthorized = userSecret === systemSecret;
+
+    useEffect(() => {
+    // 1. If not authorized, stop immediately without changing any state inside the effect body
+    if (!isAuthorized || !supabase) {
+      return;
+    }
+
     const getCurrentStatus = async () => {
-      const { data } = await supabase
-        .from("user_status")
-        .select("is_online")
-        .eq("id", 1)
-        .single();
-      
-      if (data) setOnline(data.is_online);
-      setLoading(false);
+      try {
+        const { data } = await supabase
+          .from("user_status")
+          .select("is_online")
+          .eq("id", 1)
+          .single();
+        
+        if (data) setOnline(data.is_online);
+      } catch (error) {
+        console.error("Error fetching status:", error);
+      } finally {
+        // 2. Safely toggle loading off here inside the async execution frame
+        setLoading(false);
+      }
     };
 
     getCurrentStatus();
-  }, []);
+  }, [isAuthorized]);
+
+
+  // If someone just types "/admin" without the secret parameter, block them instantly
+  if (!isAuthorized) {
+    return (
+      <div className="p-8 text-center text-red-500 font-bold max-w-md mx-auto my-20 border-2 border-red-500 bg-red-100/10 rounded-2xl">
+        🛑 403 - Unauthorized Access Blocked.
+      </div>
+    );
+  }
 
   const toggleStatus = async () => {
     if (!supabase) return;
     setLoading(true);
-    
     const newStatus = !online;
 
-    // Update row 1 in your user_status table
     const { error } = await supabase
       .from("user_status")
       .update({ is_online: newStatus })
       .eq("id", 1);
 
-        if (error) {
-      console.error("Error updating status:", error.message, error.details, error.hint);
+    if (error) {
+      console.error("Error updating status:", error.message);
     } else {
       setOnline(newStatus);
     }
     setLoading(false);
   };
-  
 
   return (
-    <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-500 bg-taupe-100 rounded-2xl border my-10">
-      <h1 className="text-2xl font-bold mb-4 dark:text-taupe-100 text-taupe-800">
-        Status Control Center
-      </h1>
-      
+    <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-900 bg-taupe-100 rounded-2xl border my-10">
+      <h1 className="text-2xl font-bold mb-4 dark:text-taupe-100 text-taupe-800">Status Control Center</h1>
       <div className="mb-6 p-4 rounded-xl border-2 inline-block">
-        Current Public Status:{" "}
-        <span className={`font-bold ${online ? "text-kiwi-11" : "text-taupe-500"}`}>
-          {online ? "🟢 ONLINE" : "🔴 OFFLINE"}
-        </span>
+        Current Public Status: <span className={`font-bold ${online ? "text-kiwi-11" : "text-taupe-500"}`}>{online ? "🟢 ONLINE" : "🔴 OFFLINE"}</span>
       </div>
-
       <div>
         <button
           onClick={toggleStatus}
           disabled={loading}
-          className={`px-6 py-3 rounded-xl font-bold transition-all text-white ${
-            online 
-              ? "bg-red-500 hover:bg-red-600" 
-              : "bg-kiwi-11 hover:bg-opacity-90"
-          } disabled:opacity-50`}
+          className={`px-6 py-3 rounded-xl font-bold transition-all text-white ${online ? "bg-red-500 hover:bg-red-600" : "bg-kiwi-11 hover:bg-opacity-90"} disabled:opacity-50`}
         >
           {loading ? "Updating..." : online ? "Switch to OFFLINE" : "Switch to ONLINE"}
         </button>
