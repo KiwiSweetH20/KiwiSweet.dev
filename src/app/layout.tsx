@@ -7,7 +7,11 @@ import Navbar from "../components/Navbar";
 import ThemeToggle from "../components/ThemeToggle";
 import Footer from "../components/Footer";
 
-import { Comic_Relief } from "next/font/google"; // Or your local font import path
+import { Comic_Relief, Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 // 1. Initialize the font and explicitly declare the custom property name
 const comicRelief = Comic_Relief({
@@ -50,7 +54,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <body
         className={`bg-slate-1 text-slate-12 ${comicRelief.variable} antialiased min-h-screen`} suppressHydrationWarning>
         <Providers>
