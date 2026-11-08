@@ -15,7 +15,7 @@ export default function Page() {
         <div className="flex flex-col md:flex-row lg:flex-row justify-center w-full p-5 gap-5">
           <div className="basis-1/3 justify-center md:items-center lg:items-baseline">
             <Image
-              src="/Gen.jpeg"
+              src="/images/Gen.jpeg"
               alt="KiwiSweet"
               key="crypto.randomUUID()"
               width="280"
