@@ -1,10 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { useSyncExternalStore } from "react"
 
 import Time from "./Time";
 import StatusCard from "./StatusCard";
 import PixelSprite from "./PixelSprite";
+import SkeletonText from "./SkeletonText";
+
+const subscribe = () => () => {};
 
 export default function Intro() {
+const isMounted = useSyncExternalStore(subscribe, () => true, () => false);
+
   const Pfp = [
     <Image
       src="/images/KiwiSweet.jpg"
@@ -50,12 +58,20 @@ export default function Intro() {
               Hi! I&apos;m Genevieve
             </span>
           </div>
-          <span className="m-1 text-taupe-800">
+          {!isMounted ? (
+            <div className="m-1 mt-2">
+              <SkeletonText/>
+            </div>
+            )
+            : (
+              <span className="m-1 text-taupe-800">
             I&apos;m learning and growing as a front-end developer, creating
             websites that are interactive, creative, and fun to use. I&apos;m
             always experimenting, learning new things, and turning ideas into
             something I can bring to life with code.
           </span>
+            )
+          }
         </div>
       </div>
     </div>
