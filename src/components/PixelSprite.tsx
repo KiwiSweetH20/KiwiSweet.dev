@@ -1,18 +1,15 @@
 "use client";
 
 import Image from "next/image";
-
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useSyncExternalStore } from "react";
 
 const SPRITE_SIZE = 32;
 const SPRITE_SCALE = 2;
-const CONSTANT_SPEED = 2;
+const CONSTANT_SPEED = 3;
 const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
 
-//  PLACE YOUR BOWL IMAGES HERE
-
+// PLACE YOUR BOWL IMAGES HERE
 const BOWL_IMAGES = {
   full: "/images/FullBowl.png",
   empty: "/images/EmptyBowl.png",
@@ -46,6 +43,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
   const [isEnabled, setIsEnabled] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const spriteRef = useRef<HTMLDivElement>(null);
@@ -53,13 +51,12 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
   const position = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const currentAnimation = useRef<keyof typeof animations>("sit");
   const frame = useRef<number>(0);
+  const hasInitialized = useRef<boolean>(false);
 
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  
   const isMounted = useSyncExternalStore(
     subscribe,
     () => true,
-    () => false,
+    () => false
   );
 
   useEffect(() => {
@@ -90,7 +87,6 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     };
 
     checkTheme();
-
     const observer = new MutationObserver(checkTheme);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -101,6 +97,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
   }, []);
 
   const handleToggle = () => {
+    hasInitialized.current = false;
     setIsEnabled((prev) => {
       const nextState = !prev;
       localStorage.setItem("catSpriteEnabled", JSON.stringify(nextState));
@@ -108,38 +105,54 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     });
   };
 
-  /* PLACE CAT AT HOME (above the button) */
-  useEffect(() => {
-    if (!hasMounted || !isEnabled || !homeRef.current) return;
+  /* PLACE CAT AT HOME (Runs synchronously before paint to prevent top-left flicker) */
+  useLayoutEffect(() => {
+    if (!hasMounted || !isEnabled || !isImageLoaded || !homeRef.current) return;
+
     const home = homeRef.current.getBoundingClientRect();
     const centerX = home.left + home.width / 2;
     const centerY = home.top + home.height / 2;
+
     position.current = { x: centerX, y: centerY };
     mouse.current = { x: centerX, y: centerY };
     currentAnimation.current = "sit";
     frame.current = 0;
-  }, [isEnabled, hasMounted]);
+    hasInitialized.current = true;
+
+    if (spriteRef.current) {
+      spriteRef.current.style.transform = `translate3d(0px, 0px, 0) scale(${SPRITE_SCALE})`;
+    }
+  }, [isEnabled, hasMounted, isImageLoaded]);
 
   /* TRACK MOUSE */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
+
     const handleMouseMove = (event: MouseEvent) => {
       mouse.current.x = event.clientX;
       mouse.current.y = event.clientY;
     };
+
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isEnabled, hasMounted]);
 
   /* MOVE TOWARD MOUSE */
   useEffect(() => {
-    if (!hasMounted || !isEnabled) return;
+    if (!hasMounted || !isEnabled || !isImageLoaded) return;
 
     let animationFrame: number;
+
     const move = () => {
+      if (!hasInitialized.current) {
+        animationFrame = requestAnimationFrame(move);
+        return;
+      }
+
       const dx = mouse.current.x - position.current.x;
       const dy = mouse.current.y - position.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
+
       let newAnimation: keyof typeof animations;
 
       if (distance > CONSTANT_SPEED) {
@@ -161,6 +174,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
           "runUp",
           "runUpRight",
         ] as const;
+
         newAnimation = directions[zone];
       } else {
         position.current.x = mouse.current.x;
@@ -190,20 +204,21 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
 
     animationFrame = requestAnimationFrame(move);
     return () => cancelAnimationFrame(animationFrame);
-  }, [isEnabled, hasMounted]);
+  }, [isEnabled, hasMounted, isImageLoaded]);
 
   /* ANIMATE FRAMES */
   useEffect(() => {
-    if (!hasMounted || !isEnabled) return;
+    if (!hasMounted || !isEnabled || !isImageLoaded) return;
+
     const interval = setInterval(() => {
       if (!spriteRef.current) return;
       const animation = animations[currentAnimation.current];
       frame.current = (frame.current + 1) % animation.frames;
       spriteRef.current.style.backgroundPosition = `-${frame.current * SPRITE_SIZE}px -${animation.row * SPRITE_SIZE}px`;
     }, 100);
-    return () => clearInterval(interval);
-  }, [isEnabled, hasMounted]);
 
+    return () => clearInterval(interval);
+  }, [isEnabled, hasMounted, isImageLoaded]);
 
   let currentBgString = bgImage;
   if (bgImage && typeof bgImage === "object") {
@@ -245,7 +260,6 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
         {!currentBgString && (
           <div className="absolute w-12 h-6 bg-amber-700/20 dark:bg-amber-500/10 rounded-full blur-[2px] bottom-2 pointer-events-none" />
         )}
-
         <div
           ref={homeRef}
           className="flex shrink-0"
