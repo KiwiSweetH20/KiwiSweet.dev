@@ -8,29 +8,15 @@ export default function StatusCard() {
   useEffect(() => {
     if (!supabase) return;
 
-    // 1. Fetch initial status from database
-    const fetchStatus = async () => {
-      const { data } = await supabase
-        .from("user_status")
-        .select("is_online")
-        .eq("id", 1)
-        .single();
-      if (data) setOnline(data.is_online);
-    };
+    // Listen to the shared presence channel instead of database rows
+    const channel = supabase.channel("admin-presence-room");
 
-    fetchStatus();
-
-    // 2. Subscribe to realtime row updates
-    const channel = supabase
-      .channel("status-updates")
-            .on(
-        "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "user_status", filter: "id=eq.1" },
-        (payload: { new: { is_online: boolean } }) => {
-          setOnline(payload.new.is_online);
-        }
-      )
-
+    channel
+      .on("presence", { event: "sync" }, () => {
+        const state = channel.presenceState();
+        const adminIsHere = Boolean(state["admin"] && state["admin"].length > 0);
+        setOnline(adminIsHere);
+      })
       .subscribe();
 
     return () => {
