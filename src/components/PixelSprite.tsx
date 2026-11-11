@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const SPRITE_SIZE = 32;
 const SPRITE_SCALE = 2;
-const CONSTANT_SPEED = 3;
+const CONSTANT_SPEED = 2;
 const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
 
 // PLACE YOUR BOWL IMAGES HERE
