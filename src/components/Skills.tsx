@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function IntroTools() {
+export default function Skills() {
   const kiwiIcon = [
     <Image
       src="/images/Kiwi.svg"
@@ -26,11 +26,11 @@ export default function IntroTools() {
           xmlnsXlink="http://www.w3.org/1999/xlink"
           fill="#000000"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
