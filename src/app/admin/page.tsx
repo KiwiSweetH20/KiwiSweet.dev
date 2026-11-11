@@ -15,7 +15,6 @@ function AdminContent() {
   useEffect(() => {
     if (!isAuthorized || !supabase) return;
 
-    // 1. Join a shared Realtime channel with a unique key for the admin
     const channel = supabase.channel("admin-presence-room", {
       config: {
         presence: {
@@ -24,7 +23,6 @@ function AdminContent() {
       },
     });
 
-    // 2. Subscribe and broadcast your online presence once connected
     channel.subscribe(async (status) => {
       if (status === "SUBSCRIBED") {
         await channel.track({
@@ -37,7 +35,6 @@ function AdminContent() {
       }
     });
 
-    // 3. Clean up automatically when the tab closes or component unmounts
     return () => {
       channel.untrack();
       supabase.removeChannel(channel);
@@ -53,17 +50,17 @@ function AdminContent() {
   }
 
   return (
-    <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-900 bg-taupe-100 rounded-2xl border my-10">
+    <div className="p-8 font-sans max-w-md mx-auto text-center dark:bg-taupe-500 bg-kiwi-3 border-taupe-800 dark:border-kiwi-9 rounded-2xl border-2 my-10">
       <h1 className="text-2xl font-bold mb-4 dark:text-taupe-100 text-taupe-800">
         Live Presence Broadcaster
       </h1>
-      <div className="mb-4 p-4 rounded-xl border-2 inline-block">
-        <span className={`font-bold ${connected ? "text-kiwi-11" : "text-taupe-500"}`}>
+      <div className="mb-4 p-4 rounded-xl border-2 inline-block bg-taupe-800 dark:bg-taupe-100">
+        <span className={`font-bold ${connected ? "text-kiwi-9 " : "text-taupe-500"}`}>
           {connected ? "🟢 BROADCASTING ONLINE" : "🟡 CONNECTING..."}
         </span>
       </div>
-      <p className="text-sm text-taupe-500">
-        Your live status is synced via WebSockets. Simply close this tab to go Offline automatically.
+      <p className="text-sm text-taupe-500 dark:text-taupe-400">
+        This live status is synced via WebSockets.
       </p>
     </div>
   );
