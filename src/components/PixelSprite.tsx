@@ -3,6 +3,8 @@
 import Image from "next/image";
 
 import { useEffect, useRef, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useSyncExternalStore } from "react";
 
 const SPRITE_SIZE = 32;
 const SPRITE_SCALE = 2;
@@ -12,8 +14,8 @@ const HOME_SIZE = SPRITE_SIZE * SPRITE_SCALE; // 64px box the cat "lives" in
 //  PLACE YOUR BOWL IMAGES HERE
 
 const BOWL_IMAGES = {
-  full: "/images/FullBowl.png", 
-  empty: "/images/EmptyBowl.png", 
+  full: "/images/FullBowl.png",
+  empty: "/images/EmptyBowl.png",
 };
 
 const animations = {
@@ -29,12 +31,16 @@ const animations = {
   runDownLeft: { row: 8, frames: 6, speed: 100 },
 };
 
-  interface MouseSpriteProps {
-  bgImage?: string | {
-    light: string;
-    dark: string;
-  };
+interface MouseSpriteProps {
+  bgImage?:
+    | string
+    | {
+        light: string;
+        dark: string;
+      };
 }
+
+const subscribe = () => () => {};
 
 export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
   const [isEnabled, setIsEnabled] = useState(true);
@@ -48,7 +54,20 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
   const currentAnimation = useRef<keyof typeof animations>("sit");
   const frame = useRef<number>(0);
 
-  // Handle initialization and theme changes
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  
+  const isMounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/images/actions.png";
+    img.onload = () => setIsImageLoaded(true);
+  }, []);
+
   useEffect(() => {
     requestAnimationFrame(() => {
       setHasMounted(true);
@@ -185,9 +204,6 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     return () => clearInterval(interval);
   }, [isEnabled, hasMounted]);
 
-  if (!hasMounted) {
-    return null;
-  }
 
   let currentBgString = bgImage;
   if (bgImage && typeof bgImage === "object") {
@@ -205,6 +221,15 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
         backgroundImage: "radial-gradient(#d5cdc4 1px, transparent 1px)",
         backgroundSize: "8px 8px",
       };
+
+  if (!isMounted || !isImageLoaded) {
+    return (
+      <div className="flex flex-col w-full items-center justify-center gap-6">
+        <Skeleton className="w-20 h-20 rounded-lg" />
+        <Skeleton className="w-15 h-10 rounded-t-lg" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-4">

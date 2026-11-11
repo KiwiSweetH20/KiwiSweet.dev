@@ -17,7 +17,7 @@ export default function ThemeToggle() {
 
   if (!isMounted || !resolvedTheme) {
     return (
-      <div className="flex w-full justify-center md:justify-end mt-36 md:mt-12 md:pr-25">
+      <div className="flex w-full justify-center md:justify-end lg:justigy-end mt-36 md:mt-12 md:pr-25">
         <Skeleton className="w-13 h-13 rounded-lg" />
       </div>
     );

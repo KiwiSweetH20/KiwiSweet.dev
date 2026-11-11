@@ -1,8 +1,31 @@
+"use client";
+
+import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
+import {useSyncExternalStore} from "react";
 
 import {ExternalLink} from 'react-feather';
 
+const subscribe = () => () => {};
+
 export default function Projects() {
+  const isMounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  )
+    const kiwiIcon = [
+    isMounted ? (<Image
+      src="/images/Kiwi.svg"
+      alt="Me"
+      key="crypto.randomUUID()"
+      width="12"
+      height="12"
+      className=" w-12 h-12 rounded-full object-cover "
+    />) : (
+      <Skeleton key="kiwi-skeleton" className="inline-flex w-7 h-7 rounded-full m-2"/>
+    )
+  ];
   const myProjects = [
     {
       id: crypto.randomUUID(),
@@ -32,13 +55,7 @@ export default function Projects() {
   return (
     <div className="pt-5 md:pt-20 lg:pt-20 p-20 flex flex-col w-full h-fit justify-center">
       <div className="inline-flex rounded-2xl mx-auto items-center md:items-left lg:items-left">
-        <Image
-          src="/images/Kiwi.svg"
-          alt="kiwi"
-          width="12"
-          height="12"
-          className="w-12 h-12 rounded-full object-cover "
-        />
+       {kiwiIcon}
         <span className="dark:text-kiwi-9 text-taupe-800 inline-flex text-4xl font-bold ">
           Projects
         </span>

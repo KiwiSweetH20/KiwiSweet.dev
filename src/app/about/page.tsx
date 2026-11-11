@@ -1,9 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { GitHub, Linkedin } from "react-feather";
+import { useSyncExternalStore } from "react";
 
 import IntroTools from "../../components/IntroTools";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const subscribe = () => () => {};
 
 export default function Page() {
+  const isMounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+
   return (
     <div>
       <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-15 lg:py-25 md:py-32 font-(family-name:--font-comic-relief)">
@@ -14,14 +26,18 @@ export default function Page() {
         </div>
         <div className="flex flex-col md:flex-row lg:flex-row justify-center w-full p-5 gap-5">
           <div className="basis-1/3 justify-center md:items-center lg:items-baseline">
-            <Image
-              src="/images/Gen.jpeg"
-              alt="KiwiSweet"
-              key="crypto.randomUUID()"
-              width="280"
-              height="300"
-              className=" h-auto w-auto rounded-md"
-            />
+            {isMounted ? (
+              <Image
+                src="/images/Gen.jpeg"
+                alt="KiwiSweet"
+                key="crypto.randomUUID()"
+                width="280"
+                height="300"
+                className=" h-auto w-auto rounded-md"
+              />
+            ) : (
+              <Skeleton className="w-80 h-106.5 rounded-md" />
+            )}
           </div>
           <div className="flex flex-col gap-5 justify-around items-baseline md:justify-center lg:justify-baseline basis-2/3 ">
             <div className="flex-col text-lg text-justify px-3 text-taupe-800">

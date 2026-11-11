@@ -44,7 +44,7 @@ function AdminContent() {
   if (!isAuthorized) {
     return (
       <div className="p-8 text-center text-red-500 font-bold max-w-md mx-auto my-20 border-2 border-red-500 bg-red-100/10 rounded-2xl">
-        🛑 403 - Unauthorized Access Blocked.
+        403 - Unauthorized Access Blocked.
       </div>
     );
   }
@@ -56,7 +56,7 @@ function AdminContent() {
       </h1>
       <div className="mb-4 p-4 rounded-xl border-2 inline-block bg-taupe-800 dark:bg-taupe-100">
         <span className={`font-bold ${connected ? "text-kiwi-9 " : "text-taupe-500"}`}>
-          {connected ? "🟢 BROADCASTING ONLINE" : "🟡 CONNECTING..."}
+          {connected ? " BROADCASTING ONLINE" : " CONNECTING..."}
         </span>
       </div>
       <p className="text-sm text-taupe-500 dark:text-taupe-400">

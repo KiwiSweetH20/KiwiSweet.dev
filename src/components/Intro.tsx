@@ -1,17 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useSyncExternalStore } from "react"
+import { useSyncExternalStore } from "react";
 
 import Time from "./Time";
 import StatusCard from "./StatusCard";
 import PixelSprite from "./PixelSprite";
 import SkeletonText from "./SkeletonText";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const subscribe = () => () => {};
 
 export default function Intro() {
-const isMounted = useSyncExternalStore(subscribe, () => true, () => false);
+  const isMounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
 
   const Pfp = [
     <Image
@@ -24,14 +29,16 @@ const isMounted = useSyncExternalStore(subscribe, () => true, () => false);
     />,
   ];
   const kiwiIcon = [
-    <Image
+    isMounted ? (<Image
       src="/images/Kiwi.svg"
       alt="Me"
       key="crypto.randomUUID()"
       width="12"
       height="12"
       className=" w-12 h-12 rounded-full object-cover "
-    />,
+    />) : (
+      <Skeleton key="kiwi-skeleton" className="inline-flex w-7 h-7 rounded-full m-2"/>
+    )
   ];
 
   return (
@@ -39,17 +46,24 @@ const isMounted = useSyncExternalStore(subscribe, () => true, () => false);
       <div className="basis-1/5 p-3 flex flex-col items-center">
         <div className="">{Pfp}</div>
         <StatusCard />
-        {/* <Socials /> */}
-        <PixelSprite bgImage={{ light: "/images/DayBg.png", dark: "/images/NightBg.jpg" }} />
+        <PixelSprite
+          bgImage={{
+            light: "/images/DayBg.png",
+            dark: "/images/NightBg.jpg",
+          }}
+        />
       </div>
       <div className="basis-4/5 p-3 flex flex-col">
         <div className="flex flex-row justify-between items-center gap-3">
           <div className="flex flex-col">
-            <span className="dark:text-kiwi-9 text-taupe-900 text-2xl">Genevieve</span>
+            <span className="dark:text-kiwi-9 text-taupe-900 text-2xl">
+              Genevieve
+            </span>
             <span className=" text-taupe-800">A.K.A KiwiSweet</span>
           </div>
-          <div className=" text-taupe-800"><Time /></div>
-          
+          <div className=" text-taupe-800">
+            <Time />
+          </div>
         </div>
         <div className="flex flex-col my-2">
           <div className="inline-flex items-center my-1">
@@ -59,19 +73,26 @@ const isMounted = useSyncExternalStore(subscribe, () => true, () => false);
             </span>
           </div>
           {!isMounted ? (
-            <div className="m-1 mt-2">
-              <SkeletonText/>
+            <div className=" m-1 gap-6 flex flex-col">
+              <SkeletonText />
+              <SkeletonText />
             </div>
-            )
-            : (
+          ) : (
+            <div className="flex flex-col gap-3">
               <span className="m-1 text-taupe-800">
-            I&apos;m learning and growing as a front-end developer, creating
-            websites that are interactive, creative, and fun to use. I&apos;m
-            always experimenting, learning new things, and turning ideas into
-            something I can bring to life with code.
-          </span>
-            )
-          }
+                I&apos;m learning and growing as a front-end developer, creating
+                websites that are interactive, creative, and fun to use.
+                I&apos;m always experimenting, learning new things, and turning
+                ideas into something I can bring to life with code.
+              </span>
+              <span className="m-1 text-taupe-800 ">
+                Outside of coding, I&apos;m always gathering inspiration from
+                games, pixel art, and creative web design. I&apos;m excited to
+                keep expanding my toolkit, take on bigger challenges, and see
+                where this journey takes me next.
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
