@@ -75,7 +75,7 @@ export default function Page() {
                 </span>
               </a>
               <a
-                href="https://www.linkedin.com/feed/"
+                href="https://www.linkedin.com/in/genevieve-van-niekerk-6013653b3/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-block cursor-pointer"
