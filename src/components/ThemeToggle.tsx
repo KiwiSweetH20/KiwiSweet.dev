@@ -26,7 +26,7 @@ export default function ThemeToggle() {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className="flex w-full justify-center md:justify-end mt-36 md:mt-12 md:pr-25">
+    <div className="flex w-full justify-center md:justify-end mt-38 md:mt-12 md:pr-25">
       <button
         onClick={() => setTheme(isDark ? "light" : "dark")}
         className="rounded-lg bg-slate-3 dark:bg-slate-6 text-slate-12 cursor-pointer hover:opacity-80 transition-all duration-200"
@@ -40,7 +40,7 @@ export default function ThemeToggle() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-13 h-13 text-kiwi-9"
+            className="w-15 h-15 text-kiwi-9"
           >
             <path
               strokeLinecap="round"
@@ -56,7 +56,7 @@ export default function ThemeToggle() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-13 h-13 text-taupe-800"
+            className="w-15 h-15 text-taupe-800"
           >
             <path
               strokeLinecap="round"
