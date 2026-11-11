@@ -4,7 +4,7 @@ import Image from "next/image";
 import { GitHub, Linkedin } from "react-feather";
 import { useSyncExternalStore } from "react";
 
-import IntroTools from "../../components/IntroTools";
+import Skills from "../../components/Skills";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const subscribe = () => () => {};
@@ -60,7 +60,6 @@ export default function Page() {
               </p>
             </div>
 
-            {/* socials */}
             <div className="flex flex-row items-center justify-center px-2 gap-2">
               <a
                 href="https://github.com/KiwiSweetH20"
@@ -131,7 +130,7 @@ export default function Page() {
           </div>
         </div>
         <div>
-          <IntroTools />
+          <Skills/>
         </div>
       </div>
     </div>

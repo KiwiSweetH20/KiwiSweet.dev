@@ -15,23 +15,29 @@ export default function IntroTools() {
 
   const LangInfo = [
     {
-      tool: "JavaScript",
+      tool: "HTML",
       icon: (
         <svg
-          width="30px"
-          height="30px"
-          viewBox="0 0 32 32"
+          width="25px"
+          height="25px"
+          viewBox="0 0 17 17"
+          version="1.1"
           xmlns="http://www.w3.org/2000/svg"
-          className="dark:fill-kiwi-9 fill-taupe-800"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          fill="#000000"
         >
-          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
-            <path d="M 5 5 L 5 27 L 27 27 L 27 5 L 5 5 z M 7 7 L 25 7 L 25 25 L 7 25 L 7 7 z M 20.244141 15 C 18.819141 15 17.898438 15.912141 17.898438 17.119141 C 17.898437 18.430141 18.667172 19.056781 19.826172 19.550781 L 20.226562 19.722656 C 20.958563 20.045656 21.394531 20.234156 21.394531 20.785156 C 21.394531 21.250156 20.967734 21.583984 20.302734 21.583984 C 19.514734 21.583984 19.066609 21.166469 18.724609 20.605469 L 17.414062 21.355469 C 17.879062 22.286469 18.847844 23 20.339844 23 C 21.859844 23 23 22.211578 23 20.767578 C 23 19.418578 22.230328 18.819234 20.861328 18.240234 L 20.462891 18.068359 C 19.769891 17.764359 19.474609 17.564844 19.474609 17.089844 C 19.474609 16.699844 19.769141 16.396484 20.244141 16.396484 C 20.710141 16.396484 21.003297 16.595844 21.279297 17.089844 L 22.535156 16.283203 C 22.003156 15.352203 21.270141 15 20.244141 15 z M 14.394531 15.095703 L 14.394531 20.558594 C 14.394531 21.356594 14.052297 21.564453 13.529297 21.564453 C 12.978297 21.564453 12.741141 21.185281 12.494141 20.738281 L 11.183594 21.527344 C 11.563594 22.335344 12.312703 23 13.595703 23 C 15.020703 23 16 22.239172 16 20.576172 L 16 15.095703 L 14.394531 15.095703 z"></path>
+            {" "}
+            <path
+              d="M15.54 0.5l-1.28 14.379-5.78 1.621-5.74-1.621-1.28-14.379h14.080zM12.92 3.439h-8.84l0.47 5.34h6.121l-0.222 2.279-1.969 0.532-1.96-0.531-0.13-1.399h-1.749l0.22 2.779 3.62 1h0.039v-0.010l3.591-0.99 0.5-5.44h-6.441l-0.15-1.81h6.74l0.16-1.75z"
+              fill="#A6E3A1"
+            ></path>{" "}
           </g>
         </svg>
       ),
@@ -66,8 +72,6 @@ export default function IntroTools() {
       ),
       id: crypto.randomUUID(),
     },
-  ];
-  const FrameInfo = [
     {
       tool: "React",
       icon: (
@@ -113,6 +117,8 @@ export default function IntroTools() {
       ),
       id: crypto.randomUUID(),
     },
+  ];
+  const FrameInfo = [
     {
       tool: "Next",
       icon: (
@@ -170,28 +176,34 @@ export default function IntroTools() {
     <div className="flex flex-col items-start justify-baseline p-5">
       <div className="inline-flex items-center my-2">
         {kiwiIcon}
-        <span className=" inline-flex dark:text-kiwi-9 text-taupe-800 text-3xl font-bold">Tools</span>
+        <span className=" inline-flex dark:text-kiwi-9 text-taupe-800 text-3xl font-bold">
+          Skills
+        </span>
       </div>
       <div className="my-4">
-      <fieldset className=" w-fit h-fit rounded-2xl">
-        <legend className="dark:text-kiwi-9 text-taupe-800 text-2xl pb-2">Languages</legend>
-        <div className="inline-flex flex-row items-center gap-3">
-          {LangInfo.map((tools) => (
-            <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
-          ))}
-      </div>
-      </fieldset>
-      </div>
-      <div className="my-4">
-      <fieldset className=" w-fit h-fit rounded-2xl">
-      <legend className="dark:text-kiwi-9 text-taupe-800 text-2xl pb-2">Frameworks</legend>
-        <div className="inline-flex flex-row items-center gap-3">
-          {FrameInfo.map((tools) => (
-            <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
-          ))}
-        </div>
+        <fieldset className=" w-fit h-fit rounded-2xl">
+          <legend className="dark:text-kiwi-9 text-taupe-800 text-2xl pb-2">
+            Languages
+          </legend>
+          <div className="inline-flex flex-row items-center gap-3">
+            {LangInfo.map((tools) => (
+              <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
+            ))}
+          </div>
         </fieldset>
-        </div>
+      </div>
+      <div className="my-4">
+        <fieldset className=" w-fit h-fit rounded-2xl">
+          <legend className="dark:text-kiwi-9 text-taupe-800 text-2xl pb-2">
+            Frameworks
+          </legend>
+          <div className="inline-flex flex-row items-center gap-3">
+            {FrameInfo.map((tools) => (
+              <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
+            ))}
+          </div>
+        </fieldset>
+      </div>
     </div>
   );
 }
@@ -199,7 +211,9 @@ export default function IntroTools() {
 function ToolItems({ tool, icon }: { tool: string; icon: React.ReactNode }) {
   return (
     <div className="mt-1 border-2 border-taupe-800 dark:bg-taupe-400/30 bg-kiwi-3 rounded-4xl p-3 inline-flex items-center w-fit text-taupe-800">
-      {icon}{" "}{tool}
+      {icon}
+      {" "}
+      {tool}
     </div>
   );
 }
