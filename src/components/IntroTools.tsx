@@ -8,6 +8,7 @@ export default function IntroTools() {
       key="crypto.randomUUID()"
       width="12"
       height="12"
+      loading="eager"
       className="w-12 h-12 rounded-full object-cover "
     />,
   ];

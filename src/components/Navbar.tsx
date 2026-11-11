@@ -22,6 +22,7 @@ export default function Navbar() {
         key="crypto.randomUUID()"
         width="12"
         height="12"
+        loading="eager"
         className="shrink-0 size-12 rounded-full object-cover overflow-hidden hover:animate-spin"
       />
     ) : (

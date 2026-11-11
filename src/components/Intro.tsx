@@ -35,6 +35,7 @@ export default function Intro() {
       key="crypto.randomUUID()"
       width="12"
       height="12"
+      loading="eager"
       className=" w-12 h-12 rounded-full object-cover "
     />) : (
       <Skeleton key="kiwi-skeleton" className="inline-flex w-7 h-7 rounded-full m-2"/>

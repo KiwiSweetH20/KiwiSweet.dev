@@ -72,6 +72,7 @@ export default function Projects() {
             alt="Kiwi Logo"
             width={48}
             height={48}
+            loading="eager"
             className="h-12 w-12 rounded-full object-cover"
           />
         ) : (
