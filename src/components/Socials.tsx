@@ -11,7 +11,7 @@ export default function Socials() {
     {
       id: crypto.randomUUID(),
       icon: <Linkedin/>,
-      link: "https://www.linkedin.com/feed/",
+      link: "https://www.linkedin.com/in/genevieve-van-niekerk-6013653b3/",
       tooltip: "LinkedIn",
     },
     {
