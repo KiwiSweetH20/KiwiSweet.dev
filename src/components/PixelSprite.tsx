@@ -105,7 +105,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     });
   };
 
-  /* PLACE CAT AT HOME (Runs synchronously before paint to prevent top-left flicker) */
+  /* Places cat at home place */
   useLayoutEffect(() => {
     if (!hasMounted || !isEnabled || !isImageLoaded || !homeRef.current) return;
 
@@ -124,7 +124,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     }
   }, [isEnabled, hasMounted, isImageLoaded]);
 
-  /* TRACK MOUSE */
+  /* track mouse */
   useEffect(() => {
     if (!hasMounted || !isEnabled) return;
 
@@ -137,7 +137,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isEnabled, hasMounted]);
 
-  /* MOVE TOWARD MOUSE */
+  /* follows mouse */
   useEffect(() => {
     if (!hasMounted || !isEnabled || !isImageLoaded) return;
 
@@ -206,7 +206,7 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
     return () => cancelAnimationFrame(animationFrame);
   }, [isEnabled, hasMounted, isImageLoaded]);
 
-  /* ANIMATE FRAMES */
+  /* Animate frames*/
   useEffect(() => {
     if (!hasMounted || !isEnabled || !isImageLoaded) return;
 
@@ -248,7 +248,6 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {/* 1. Cat Home Area */}
       <div
         className="relative flex shrink-0 items-center justify-center rounded-xl bg-taupe-50/50 dark:bg-zinc-800/50 border border-dashed border-taupe-300 dark:border-zinc-700 shadow-inner overflow-visible"
         style={{
@@ -286,7 +285,6 @@ export default function MouseSprite({ bgImage = "" }: MouseSpriteProps) {
         </div>
       </div>
 
-      {/* 2. Graphical Cat Bowl Button */}
       <button
         onClick={handleToggle}
         className="group relative z-10 flex items-center justify-center w-16 h-12 transition-transform active:scale-95 focus:outline-hidden"
