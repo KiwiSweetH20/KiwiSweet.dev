@@ -19,9 +19,12 @@ export default function Page() {
   return (
     <div>
       <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-10 lg:py-25 md:py-32 font-(family-name:--font-comic-relief)">
-        <div className="flex justify-baseline w-full px-5">
+        <div className="flex flex-col gap-2 justify-baseline w-full px-5">
           <p className=" text-4xl dark:text-kiwi-9 text-kiwi-11 font-bold">
             About Me
+          </p>
+          <p className="pb-2 text-taupe-800 text-lg">
+            A LITTLE ABOUT MY JOURNEY
           </p>
         </div>
         <div className="flex flex-col md:flex-row lg:flex-row justify-center w-full p-5 gap-5">
@@ -41,22 +44,20 @@ export default function Page() {
           </div>
           <div className="flex flex-col gap-5 justify-around items-baseline md:justify-center lg:justify-baseline basis-2/3 ">
             <div className="flex-col text-lg text-justify px-3 text-taupe-800">
-              <p className="pb-6">
-                I&apos;m a creative and driven individual with a passion for
-                bringing ideas to life through technology and design.
+              <p className="pb-3 text-3xl">
+                It started with a website and a spark of creativity.
               </p>
-              <p className="pb-6">
-                I enjoy exploring new possibilities, thinking outside the box,
-                and finding creative solutions to challenges. I&apos;m naturally
-                curious and always eager to learn, pushing myself beyond my
-                comfort zone to develop new skills and turn unfamiliar problems
-                into opportunities for growth.
+              <p className="pb-3">
+                I&apos;m a creative and driven individual who enjoys exploring
+                the intersection of technology, design and problem-solving. I
+                have a passion for bringing ideas to life and finding new ways
+                to turn imagination into something meaningful.
               </p>
-              <p className="pb-6">
-                I believe that creativity, determination, and a willingness to
-                figure things out can take an idea a long way. I&apos;m excited
-                to contribute fresh perspectives, embrace new challenges, and
-                grow alongside a team where I can make a meaningful impact.
+              <p className="pb-3">
+                I&apos;m naturally curious, enjoy thinking outside the box and
+                love exploring new possibilities. Whether I&apos;m experimenting with
+                a new idea, learning a skill or working through a challenge, I
+                find excitement in the process of discovering what I can create.
               </p>
             </div>
 
@@ -129,8 +130,22 @@ export default function Page() {
             </div>
           </div>
         </div>
+        <div className="flex flex-col gap-4">
+          <p className="text-4xl text-kiwi-9">
+            It started with a wensite and a spark of creativity.
+          </p>
+          <p className="text-lg text-taupe-800">
+            It started with a wensite and a spark of creativity.
+          </p>
+          <p className="text-3xl text-kiwi-9">
+            R&M Web Developers
+          </p>
+          <p className=" text-kiwi-9">
+            WordPress · Divi · Client Websites
+          </p>
+        </div>
         <div>
-          <Skills/>
+          <Skills />
         </div>
       </div>
     </div>
