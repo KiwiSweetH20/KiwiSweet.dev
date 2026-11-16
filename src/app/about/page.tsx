@@ -16,6 +16,50 @@ export default function Page() {
     () => false,
   );
 
+  const bulb = [
+      <Image
+        src="/images/bulb.svg"
+        alt="light bulb"
+        key="crypto.randomUUID()"
+        width="10"
+        height="10"
+        className="w-10 h-10 "
+      />,
+    ];
+
+  const puzzel = [
+      <Image
+        src="/images/puzzel.svg"
+        alt="puzzel piece"
+        key="crypto.randomUUID()"
+        width="10"
+        height="10"
+        className="w-10 h-10 "
+      />,
+    ];
+
+  const graduateHat = [
+      <Image
+        src="/images/graduateHat.svg"
+        alt="graduate hat"
+        key="crypto.randomUUID()"
+        width="10"
+        height="10"
+        className="w-10 h-10 "
+      />,
+    ];
+
+  const growth = [
+      <Image
+        src="/images/growth.svg"
+        alt="growth"
+        key="crypto.randomUUID()"
+        width={40}
+        height={40}
+        className="w-10 h-10 object-contain "
+      />,
+    ];
+
   return (
     <div>
       <div className=" flex flex-col justify-center w-full max-w-5xl mx-auto py-10 lg:py-25 md:py-32 font-(family-name:--font-comic-relief)">
@@ -55,9 +99,10 @@ export default function Page() {
               </p>
               <p className="pb-3">
                 I&apos;m naturally curious, enjoy thinking outside the box and
-                love exploring new possibilities. Whether I&apos;m experimenting with
-                a new idea, learning a skill or working through a challenge, I
-                find excitement in the process of discovering what I can create.
+                love exploring new possibilities. Whether I&apos;m experimenting
+                with a new idea, learning a skill or working through a
+                challenge, I find excitement in the process of discovering what
+                I can create.
               </p>
             </div>
 
@@ -130,22 +175,78 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <p className="text-4xl text-kiwi-9">
-            It started with a wensite and a spark of creativity.
+        <div className="flex flex-col justify-center items-center gap-4 mt-15 mb-15">
+          <p className="text-4xl text-center text-kiwi-9">
+            It started with a website and a spark of creativity.
           </p>
-          <p className="text-lg text-taupe-800">
-            It started with a wensite and a spark of creativity.
+          <p className="text-lg text-center text-taupe-800">
+            It started with a website and a spark of creativity.
           </p>
-          <p className="text-3xl text-kiwi-9">
-            R&M Web Developers
-          </p>
-          <p className=" text-kiwi-9">
-            WordPress · Divi · Client Websites
-          </p>
-        </div>
-        <div>
-          <Skills />
+          <div className=" flex flex-col gap-3 w-4xl justify-center p-3 border-3 border-taupe-500 rounded-sm">
+            <p className="text-3xl text-center text-kiwi-9">
+              R&M Web Developers
+            </p>
+            <p className="text-center text-kiwi-9">
+              WordPress · Divi · Client Websites
+            </p>
+            <p className="text-center text-taupe-800">
+              My journey into web development began when I had the oppertunity
+              to work with R&M Web Developers, where I gained hands-on
+              experience creating client websites using WordPress and Divi.
+            </p>
+            <p className="text-center text-taupe-800">
+              This experience introduced me to the creative side of web
+              delopment and sparked my interest in combining technology and
+              design to bring ideas to life.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-6 mt-15">
+            <p className="text-3xl text-center text-kiwi-9">
+              Always moving forward with curiosity
+            </p>
+            <div className="flex flex-row gap-4 w-4xl">
+              <div className="bg-kiwi-3 w-fit h-fit rounded-2xl p-3">
+                <p className="w-10 h-10">
+                  {bulb}
+                </p>
+                <p>Creativity</p>
+                <p>Exploring ideas and new possiblities.</p>
+              </div>
+              <div className="bg-kiwi-3 w-fit h-fit rounded-2xl p-3">
+                <p className="w-10 h-10">
+                  {puzzel}
+                </p>
+                <p>Problem-solving</p>
+                <p>Finding ways to overcome challenges.</p>
+              </div>
+              <div className="bg-kiwi-3 w-fit h-fit rounded-2xl p-3">
+                <p className="w-10 h-10">
+                  {graduateHat}
+                </p>
+                <p>Learning</p>
+                <p>Constantly developing new skills.</p>
+              </div>
+              <div className="bg-kiwi-3 w-fit h-fit rounded-2xl p-3">
+                <p className="w-10 h-10">
+                  {growth}
+                </p>
+                <p>Growth</p>
+                <p>Taking on challenges and imporoving.</p>
+              </div>
+              </div>
+              <div>
+                <Skills />
+              </div>
+              <div className="flex flex-col justify-center gap-4 w-4xl">
+                <p className="text-3xl text-kiwi-9">
+                  The journey is just getting started.
+                </p>
+                <p className=" text-taupe-800">
+                  I&apos;m excited to keep learning, take on new challenges and find oppertunites to contribute my creativity and growing technical skills.
+                </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
