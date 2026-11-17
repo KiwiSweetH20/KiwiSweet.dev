@@ -36,7 +36,7 @@ export default function Page() {
       ></g>
       <g id="SVGRepo_iconCarrier">
         {" "}
-        <style type="text/css">  </style>{" "}
+        <style type="text/css"> </style>{" "}
         <g>
           {" "}
           <path
@@ -127,7 +127,12 @@ export default function Page() {
   ];
 
   const graduateHat = [
-    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="currentColor" key="crypto.randomUUID()">
+    <svg
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      key="crypto.randomUUID()"
+    >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"
@@ -260,14 +265,15 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center gap-4 mt-20 mb-15">
-          <p className="text-4xl text-center dark:text-kiwi-9 text-kiwi-11">
+        <div className="flex flex-col justify-center items-center gap-4 mt-20 mb-15 mx-4">
+          <p className="text-4xl text-center dark:text-kiwi-9 text-kiwi-11 px-4">
             It started with a website and a spark of creativity.
           </p>
-          <p className="text-lg text-center text-taupe-800">
-            How my hands-on experience building client sites sparked my passion for front-end design.
+          <p className="text-lg text-center text-taupe-800 px-4">
+            How my hands-on experience building client sites sparked my passion
+            for front-end design.
           </p>
-          <div className=" flex flex-col gap-3 w-3xl mt-5 justify-center p-3 bg-kiwi-3 dark:bg-taupe-50 rounded-md border-3 border-kiwi-11 dark:border-kiwi-9 shadow-2xl shadow-taupe-800/30 dark:shadow-taupe-500/30">
+          <div className=" flex flex-col gap-3 mt-5 justify-center p-3 bg-kiwi-3 dark:bg-taupe-50 rounded-md border-3 border-kiwi-11 dark:border-kiwi-9 shadow-2xl shadow-taupe-800/30 dark:shadow-taupe-500/30 w-fit lg:w-3xl md:w-3xl">
             <p className="text-3xl text-center dark:text-kiwi-9 text-kiwi-11">
               R&M Web Developers
             </p>
@@ -286,49 +292,75 @@ export default function Page() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-6 mt-20">
-            <p className="text-3xl text-center dark:text-kiwi-9 text-kiwi-11">
+          <div className="flex flex-col text-center gap-6 mt-16 md:mt-20 px-4">
+            <p className="text-3xl text-center dark:text-kiwi-9 text-kiwi-11 px-4">
               Always moving forward with curiosity
             </p>
-            <div className="flex flex-row gap-4 max-w-6xl mx-auto mt-5">
-              <div className="flex flex-1 flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 w-fit h-fit rounded-2xl p-3">
-                <p className="w-9 h-9 text-taupe-800 dark:text-kiwi-9">{bulb}</p>
-                <p className="text-2xl dark:text-kiwi-9 text-taupe-800">Creativity</p>
-                <p className="text-taupe-800">Exploring ideas and new possibilities.</p>
+
+            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full max-w-6xl mx-auto mt-2 ">
+              <div className="flex flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 rounded-2xl p-5 ">
+                <p className="w-9 h-9 flex items-center justify-center text-taupe-800 dark:text-kiwi-9">
+                  {bulb}
+                </p>
+                <p className="text-xl sm:text-2xl dark:text-kiwi-9 text-taupe-800">
+                  Creativity
+                </p>
+                <p className="text-sm sm:text-base text-taupe-800">
+                  Exploring ideas and new possibilities.
+                </p>
               </div>
-              <div className="flex flex-1 flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 w-fit h-fit rounded-2xl p-3">
-                <p className="w-9 h-9 text-taupe-800 dark:text-kiwi-9">
+
+              <div className="flex flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 rounded-2xl p-5">
+                <p className="w-9 h-9 flex items-center justify-center text-taupe-800 dark:text-kiwi-9">
                   {puzzel}
                 </p>
-                <p className="text-2xl dark:text-kiwi-9 text-taupe-800">Problem-solving</p>
-                <p className="text-taupe-800">Finding ways to overcome challenges.</p>
+                <p className="text-xl sm:text-2xl dark:text-kiwi-9 text-taupe-800">
+                  Problem-solving
+                </p>
+                <p className="text-sm sm:text-base text-taupe-800">
+                  Finding ways to overcome challenges.
+                </p>
               </div>
-              <div className="flex flex-1 flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 w-fit h-fit rounded-2xl p-3">
-                <p className="w-9 h-9 text-taupe-800 dark:text-kiwi-9">{graduateHat}</p>
-                <p className="text-2xl dark:text-kiwi-9 text-taupe-800">Learning</p>
-                <p className="text-taupe-800">Constantly developing new skills.</p>
+
+              <div className="flex flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 rounded-2xl p-5">
+                <p className="w-9 h-9 flex items-center justify-center text-taupe-800 dark:text-kiwi-9">
+                  {graduateHat}
+                </p>
+                <p className="text-xl sm:text-2xl dark:text-kiwi-9 text-taupe-800">
+                  Learning
+                </p>
+                <p className="text-sm sm:text-base text-taupe-800">
+                  Constantly developing new skills.
+                </p>
               </div>
-              <div className="flex flex-1 flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 w-fit h-fit rounded-2xl p-3">
-                <p className="w-9 h-9 text-taupe-800 dark:text-kiwi-9">
+
+              <div className="flex flex-col justify-center items-center text-center gap-2 bg-kiwi-3 dark:bg-taupe-50 dark:border-3 border-kiwi-9 rounded-2xl p-5">
+                <p className="w-9 h-9 flex items-center justify-center text-taupe-800 dark:text-kiwi-9">
                   {growth}
                 </p>
-                <p className="text-2xl dark:text-kiwi-9 text-taupe-800">Growth</p>
-                <p className="text-taupe-800">Taking on challenges and improving.</p>
+                <p className="text-xl sm:text-2xl dark:text-kiwi-9 text-taupe-800">
+                  Growth
+                </p>
+                <p className="text-sm sm:text-base text-taupe-800">
+                  Taking on challenges and improving.
+                </p>
               </div>
             </div>
-            <div className="flex flex-row gap-5 mt-20 w-full max-w-4xl mx-auto">
-            <div className="flex flex-1 flex-col justify-center items-center text-center gap-4 p-5 border-3 border-kiwi-9 rounded-md">
-              <p className="text-3xl dark:text-kiwi-9 text-kiwi-11">
-                The journey is just getting started.
-              </p>
-              <p className=" text-taupe-800">
-                I&apos;m excited to keep learning, take on new challenges and
-                find opportunities to contribute my creativity and growing
-                technical skills.
-              </p>
-            </div>
-              <div className="flex flex-1 border-3 border-kiwi-9 rounded-md p-5">
-              <Skills />
+
+            <div className="flex flex-col md:flex-row gap-5 mt-20 ">
+              <div className="flex flex-1 min-w-0 flex-col justify-center items-center text-center gap-4 p-5 border-3 border-kiwi-9 rounded-md">
+                <p className="text-3xl dark:text-kiwi-9 text-kiwi-11">
+                  The journey is just getting started.
+                </p>
+                <p className="text-taupe-800">
+                  I&apos;m excited to keep learning, take on new challenges and
+                  find opportunities to contribute my creativity and growing
+                  technical skills.
+                </p>
+              </div>
+
+              <div className="flex flex-1 min-w-0 border-3 border-kiwi-9 rounded-md p-5">
+                <Skills />
               </div>
             </div>
           </div>

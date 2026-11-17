@@ -172,40 +172,39 @@ export default function Skills() {
       ),
     },
   ];
-  return (
-    <div className="flex flex-col items-start justify-baseline">
-      <div className="inline-flex items-center my-2">
-        {kiwiIcon}
-        <span className=" inline-flex dark:text-kiwi-9 text-taupe-800 text-3xl font-bold">
-          Skills
-        </span>
-      </div>
-      <div className="my-4">
-        <fieldset className=" w-fit h-fit rounded-2xl">
-          <legend className="dark:text-kiwi-9 text-taupe-800 text-2xl pb-2">
-            Languages
-          </legend>
-          <div className="inline-flex flex-row items-center gap-3">
-            {LangInfo.map((tools) => (
-              <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
-            ))}
-          </div>
-        </fieldset>
-      </div>
-      <div className="my-4">
-        <fieldset className=" w-fit h-fit rounded-2xl">
-          <legend className="dark:text-kiwi-9 text-taupe-800 text-2xl pb-2">
-            Frameworks
-          </legend>
-          <div className="inline-flex flex-row items-center gap-3">
-            {FrameInfo.map((tools) => (
-              <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
-            ))}
-          </div>
-        </fieldset>
+return (
+  <div className="flex flex-col items-start w-full">
+
+    <div className="flex items-center gap-2 my-2">
+      {kiwiIcon}
+      <span className="dark:text-kiwi-9 text-taupe-800 text-3xl font-bold">
+        Skills
+      </span>
+    </div>
+
+    <div className="flex flex-col gap-3 my-4 w-full">
+      <p className="flex justify-baseline dark:text-kiwi-9 text-taupe-800 text-2xl">
+        Languages
+      </p>
+      <div className="flex flex-row items-center gap-3 flex-wrap w-full">
+        {LangInfo.map((tools) => (
+          <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
+        ))}
       </div>
     </div>
-  );
+
+    <div className="flex flex-col gap-3 my-4 w-full">
+      <p className="flex justify-baseline dark:text-kiwi-9 text-taupe-800 text-2xl">
+        Frameworks
+      </p>
+      <div className="flex flex-row items-center gap-3 flex-wrap w-full">
+        {FrameInfo.map((tools) => (
+          <ToolItems key={tools.id} tool={tools.tool} icon={tools.icon} />
+        ))}
+      </div>
+    </div>
+  </div>
+);
 }
 
 function ToolItems({ tool, icon }: { tool: string; icon: React.ReactNode }) {
